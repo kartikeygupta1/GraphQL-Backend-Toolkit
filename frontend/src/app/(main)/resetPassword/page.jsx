@@ -13,7 +13,7 @@
   rem,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
-import classes from './ForgotPasswordmodule.css';
+import classes from './ForgetPassword.module.css';
 
 export function ResetPassword() {
   return (

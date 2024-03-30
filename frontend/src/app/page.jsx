@@ -1,5 +1,5 @@
 'use client';
- 
+
 import React from 'react';
 import { Image, Container, Title, Button, Group, Text, ThemeIcon, rem, Box } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
@@ -15,36 +15,36 @@ import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabl
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Paper, useMantineTheme } from '@mantine/core';
- 
+
 
 const features = [
   {
     icon: IconReceiptOff,
-    title: 'Free and open source',
-    description: 'All packages are published under MIT license, you can use Mantine in any project',
+    title: 'Free to use',
+    description: 'It is a free software that can be used by developers to create backend Querry.',
   },
   {
     icon: IconFileCode,
-    title: 'TypeScript based',
-    description: 'Build type safe applications, all components and hooks export types',
+    title: 'Takes less Bandwidth',
+    description: 'It takes only required bandwidth as compared to Rest APIs.',
   },
   {
     icon: IconCircleDotted,
-    title: 'No annoying focus ring',
+    title: 'Reduces Manual Effort',
     description:
-      'With new :focus-visible selector focus ring will appear only when user navigates with keyboard',
+      'It automatically generates Querry as the developer has asked for it.',
   },
   {
     icon: IconFlame,
     title: 'Flexible',
     description:
-      'Customize colors, spacing, shadows, fonts and many other settings with global theme object',
+      'Provide developers with a flexible and intuitive way to define data requirements and fetch only the necessary data, eliminating the need for multiple endpoints.      ',
   },
 ];
 
 export default function Home() {
 
-   
+
 
   const items = features.map((feature) => (
     <div key={feature.title}>
@@ -67,16 +67,16 @@ export default function Home() {
 
   return (
     <>
-       
+
       <Container size="md">
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              Graph <span className={classes.highlight}>QL</span> Querry Language <br /> Backend Code Generator
+              Graph <span className={classes.highlight}>QL</span> Querry Language <br /> Backend Toolkit
             </Title>
             <Text c="dimmed" mt="md">
-              Build fully functional accessible web applications faster than ever – Mantine includes
-              more than 120 customizable components and hooks to cover you in any situation
+              GRAPHQL Backend Toolkit aims to simplify the development process that allows developers
+              to write backend code in GRAPHQL easily and in less time
             </Text>
 
             <Group
@@ -90,25 +90,22 @@ export default function Home() {
               }
             >
               <Box>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks
-                export types
+                <b>Reduces Compelxity</b> – Learning GRAPHQL can be challenging for developers due to its unique syntax and concepts.
               </Box>
               <Box>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
-                any project
+                <b>Free to use</b> – It is a free software that can be used by developers to create backend Querry.
               </Box>
               <Box>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
-                keyboard
+                <b>Removes Problem of Under and Over Fetching</b> – When we use rest APIs it over fetch or under fetch data, but when we use GraphQl this problem gets solved.
               </Box>
             </Group>
 
             <Group mt={30}>
               <Button radius="xl" size="md" className={classes.control}>
-                Get started
+                Start Generating Querry
               </Button>
               <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
+                Help
               </Button>
             </Group>
           </div>
@@ -120,11 +117,10 @@ export default function Home() {
           <Grid gutter={80}>
             <Grid.Col span={{ base: 12, md: 5 }}>
               <Title className={classes.title} order={2}>
-                A fully featured React components library for your next project
+                A fully automated Querry Generator as well as Querry tester
               </Title>
               <Text c="dimmed">
-                Build fully functional accessible web applications faster than ever – Mantine includes
-                more than 120 customizable components and hooks to cover you in any situation
+                It will generate Querry as the developer want to use it in there website.
               </Text>
 
               <Button
@@ -134,7 +130,7 @@ export default function Home() {
                 radius="md"
                 mt="xl"
               >
-                Get started
+                Start Generating Querry
               </Button>
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 7 }}>
@@ -146,15 +142,38 @@ export default function Home() {
         </div>
       </Container>
       <Container size={'md'}>
-        <CardsCarousel />
       </Container>
+
+      {/* //footer return */}
+      {/* <div className={classes.footer}>
+        <Container className={classes.inner}>
+          <MantineLogo size={28} />
+          <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandTwitter style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandYoutube style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
+            </ActionIcon>
+          </Group>
+        </Container>
+      </div> */}
+
     </>
+
+
+
+
+
   );
 }
 
 function CarouselCard({ image, title, category }) {
   return (
-     
+
     <Paper
       shadow="md"
       p="xl"
@@ -177,62 +196,7 @@ function CarouselCard({ image, title, category }) {
   );
 }
 
-const data = [
-  {
-    image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
-    category: 'beach',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
-    category: 'tourism',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
-    category: 'nature',
-  },
-];
+// import { MantineLogo } from '@mantinex/mantine-logo';
+// import classes from './FooterSocial.module.css';
 
-function CardsCarousel() {
-  const theme = useMantineTheme();
-  const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const slides = data.map((item) => (
-    <Carousel.Slide key={item.title}>
-      <CarouselCard {...item} />
-    </Carousel.Slide>
-  ));
-
-  return (
-    <Carousel
-      slideSize={{ base: '100%', sm: '50%' }}
-      slideGap={{ base: rem(2), sm: 'xl' }}
-      align="start"
-      slidesToScroll={mobile ? 1 : 2}
-    >
-      {slides}
-    </Carousel>
-  );
-}
+// export function FooterSocial() 

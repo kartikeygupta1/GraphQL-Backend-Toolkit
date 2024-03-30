@@ -20,7 +20,7 @@ function Login() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required />
+        <TextInput label="Email" placeholder="enter email over here" required />
         <PasswordInput label="Password" placeholder="Your password" required mt="md" />
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />

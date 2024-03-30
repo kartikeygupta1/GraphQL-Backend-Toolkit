@@ -1,10 +1,12 @@
 'use client';
+ 
 import React from 'react';
 import { Image, Container, Title, Button, Group, Text, ThemeIcon, rem, Box } from '@mantine/core';
 import { IconCheck } from '@tabler/icons-react';
 // import { GithubIcon } from '@mantinex/dev-icons';
 import classes from './page.module.css';
 import { Icon3dRotate } from '@tabler/icons-react';
+
 // Feature Section Imports
 import { SimpleGrid, Grid } from '@mantine/core';
 import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
@@ -13,6 +15,7 @@ import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabl
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Paper, useMantineTheme } from '@mantine/core';
+ 
 
 const features = [
   {
@@ -41,6 +44,8 @@ const features = [
 
 export default function Home() {
 
+   
+
   const items = features.map((feature) => (
     <div key={feature.title}>
       <ThemeIcon
@@ -62,6 +67,7 @@ export default function Home() {
 
   return (
     <>
+       
       <Container size="md">
         <div className={classes.inner}>
           <div className={classes.content}>
@@ -148,6 +154,7 @@ export default function Home() {
 
 function CarouselCard({ image, title, category }) {
   return (
+     
     <Paper
       shadow="md"
       p="xl"

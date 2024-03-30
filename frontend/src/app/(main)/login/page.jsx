@@ -4,7 +4,8 @@ import {
   TextInput, PasswordInput, Checkbox, Anchor, Paper, Title, Text, Container, Group, Button,
 } from '@mantine/core';
 import classes from './AuthenticationTitle.module.css';
-
+import Navbar from '../navbar';
+ 
 function Login() {
   return (
     <Container size={420} my={40}>

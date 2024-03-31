@@ -1,70 +1,87 @@
 'use client';
-import { useState } from 'react';
-import { Group, Code } from '@mantine/core';
-import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
-  IconSwitchHorizontal,
-  IconLogout,
-} from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './NavbarSimpleColored.module.css';
+import { Menu, Group, Center, Burger, Container, Title } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconChevronDown } from '@tabler/icons-react';
+import classes from './navbar.module.css';
 
-const data = [
-  { link: '', label: 'Notifications', icon: IconBellRinging },
-  { link: '', label: 'Premium Subscription', icon: IconReceipt2 },
-  { link: '', label: 'Old Querry', icon: IconDatabaseImport },
-  { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+const links = [
+  { link: '/about', label: 'Features' },
+  {
+    link: '#1',
+    label: 'Learn',
+    links: [
+      { link: '/docs', label: 'Documentation' },
+      { link: '/resources', label: 'Resources' },
+      { link: '/community', label: 'Community' },
+      { link: '/blog', label: 'Blog' },
+    ],
+  },
+  { link: '/about', label: 'About' },
+  { link: '/pricing', label: 'Pricing' },
+  {
+    link: '#2',
+    label: 'Support',
+    links: [
+      { link: '/faq', label: 'FAQ' },
+      { link: '/demo', label: 'Book a demo' },
+      { link: '/forums', label: 'Forums' },
+    ],
+  },
 ];
 
-export function NavbarSimpleColored() {
-  const [active, setActive] = useState('Billing');
+const Navbar = () => {
+  const [opened, { toggle }] = useDisclosure(false);
 
-  const links = data.map((item) => (
-    <a
-      className={classes.link}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </a>
-  ));
+  const items = links.map((link) => {
+    const menuItems = link.links?.map((item) => (
+      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    ));
+
+    if (menuItems) {
+      return (
+        <Menu key={link.label} trigger="hover" transitionProps={{ exitDuration: 0 }} withinPortal>
+          <Menu.Target>
+            <a
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size="0.9rem" stroke={1.5} />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      );
+    }
+
+    return (
+      <a
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+        onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </a>
+    );
+  });
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
-        <Group className={classes.header} justify="space-between">
-          <MantineLogo size={28} inverted style={{ color: 'white' }} />
-          <Code fw={700} className={classes.version}>
-            v1.1.1
-          </Code>
-        </Group>
-        {links}
-      </div>
-
-      <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
-
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
-        </a>
-      </div>
-    </nav>
+    <header className={classes.header}>
+      <Container size="md">
+        <div className={classes.inner}>
+          <Title order={3}>GraphQL Backend Toolkit</Title>
+          <Group gap={5} visibleFrom="sm">
+            {items}
+          </Group>
+          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+        </div>
+      </Container>
+    </header>
   );
 }
+
+export default Navbar;

@@ -1,5 +1,5 @@
- 'use client';
- import {
+'use client';
+import {
   Paper,
   Title,
   Text,
@@ -13,9 +13,9 @@
   rem,
 } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
-import classes from './ForgetPassword.module.css';
+import classes from './ForgotPassword.module.css';
 
-export function ResetPassword() {
+export default function ForgotPassword() {
   return (
     <Container size={460} my={30}>
       <Title className={classes.title} ta="center">
@@ -26,7 +26,7 @@ export function ResetPassword() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
-        <TextInput label="Your email" placeholder="enter email over here" required />
+        <TextInput label="Your email" placeholder="me@mantine.dev" required />
         <Group justify="space-between" mt="lg" className={classes.controls}>
           <Anchor c="dimmed" size="sm" className={classes.control}>
             <Center inline>
@@ -40,4 +40,3 @@ export function ResetPassword() {
     </Container>
   );
 }
-export default ResetPassword;

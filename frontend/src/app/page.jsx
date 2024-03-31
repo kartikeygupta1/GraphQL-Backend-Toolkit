@@ -10,8 +10,8 @@ import { SimpleGrid, Grid } from '@mantine/core';
 import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
 
 //footer Imports
-// import { ActionIcon } from '@mantine/core';
-// import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+
+import Footer from './Footer';
 
 const features = [
   {
@@ -137,36 +137,8 @@ export default function Home() {
       <Container size={'md'}>
       </Container>
 
-      {/* //footer return */}
-      {/* <div className={classes.footer}>
-        <Container className={classes.inner}>
-          <MantineLogo size={28} />
-          <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
-            <ActionIcon size="lg" color="gray" variant="subtle">
-              <IconBrandTwitter style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon size="lg" color="gray" variant="subtle">
-              <IconBrandYoutube style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon size="lg" color="gray" variant="subtle">
-              <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} />
-            </ActionIcon>
-          </Group>
-        </Container>
-      </div> */}
-
+      {/* footer return */}
+      <Footer />
     </>
-
-
-
-
-
   );
 }
-
-//Footer
-
-// import { MantineLogo } from '@mantinex/mantine-logo';
-// import classes from './FooterSocial.module.css';
-
-// export function FooterSocial() 

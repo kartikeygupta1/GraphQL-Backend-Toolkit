@@ -1,70 +1,53 @@
-'use client';
+import React from 'react'
 import { useState } from 'react';
-import { Group, Code } from '@mantine/core';
-import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
-  IconSwitchHorizontal,
-  IconLogout,
-} from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './NavbarSimpleColored.module.css';
+import { Container, Group, Burger } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import classes from './navbar.module.css';
+import Link from 'next/link';
 
-const data = [
-  { link: '', label: 'Notifications', icon: IconBellRinging },
-  { link: '', label: 'Premium Subscription', icon: IconReceipt2 },
-  { link: '', label: 'Old Querry', icon: IconDatabaseImport },
-  { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+
+const links = [
+  { link: '/about', label: 'GraphQL Site' },
+  { link: '/pricing', label: 'Purchase Premium' },
+  { link: '/learn', label: 'Help' },
+  { link: '/community', label: 'Comments' },
 ];
 
-export function NavbarSimpleColored() {
-  const [active, setActive] = useState('Billing');
 
-  const links = data.map((item) => (
-    <a
+
+
+const Navbar = () => {
+
+  const [opened, { toggle }] = useDisclosure(false);
+  const [active, setActive] = useState(links[0].link);
+
+  const items = links.map((link) => (
+    <Link
+      key={link.label}
+      href={link.link}
       className={classes.link}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
+      data-active={active === link.link || undefined}
       onClick={(event) => {
         event.preventDefault();
-        setActive(item.label);
+        setActive(link.link);
       }}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </a>
+      {link.label}
+    </Link>
   ));
 
   return (
-    <nav className={classes.navbar}>
-      <div className={classes.navbarMain}>
-        <Group className={classes.header} justify="space-between">
-          <MantineLogo size={28} inverted style={{ color: 'white' }} />
-          <Code fw={700} className={classes.version}>
-            v1.1.1
-          </Code>
+    <header className={classes.header}>
+      <Container size="md" className={classes.inner}>
+        <Group gap={5} visibleFrom="xs">
+          {items}
         </Group>
-        {links}
-      </div>
 
-      <div className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
-
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconLogout className={classes.linkIcon} stroke={1.5} />
-          <span>Logout</span>
-        </a>
-      </div>
-    </nav>
+        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+      </Container>
+    </header>
   );
 }
+
+export default Navbar;
+

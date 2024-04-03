@@ -11,12 +11,18 @@ import { Icon3dRotate } from '@tabler/icons-react';
 import { SimpleGrid, Grid } from '@mantine/core';
 import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
 
+<<<<<<< HEAD
 //Testimonials Imports
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Paper, useMantineTheme } from '@mantine/core';
 import Navbar from './(main)/navbar';
 
+=======
+//footer Imports
+
+import Footer from './Footer';
+>>>>>>> 35c5b96dcddd9c91c002a55f51936f27bdcfe1b5
 
 const features = [
   {
@@ -153,6 +159,7 @@ export default function Home() {
       <Container size={'md'}>
       </Container>
 
+<<<<<<< HEAD
       {/* //footer return */}
       {/* <div className={classes.footer}>
         <Container className={classes.inner}>
@@ -203,3 +210,10 @@ function CarouselCard({ image, title, category }) {
 // import classes from './FooterSocial.module.css';
 
 // export function FooterSocial() 
+=======
+      {/* footer return */}
+      <Footer />
+    </>
+  );
+}
+>>>>>>> 35c5b96dcddd9c91c002a55f51936f27bdcfe1b5

@@ -32,7 +32,7 @@ function Login() {
       <Text c="dimmed" size="sm" ta="center" mt={5}>
         Do not have an account yet?{' '}
         <Anchor size="sm" component="button">
-          Create account
+        <a href="../signup">Register</a>
         </Anchor>
       </Text>
 
@@ -43,7 +43,7 @@ function Login() {
           <Group justify="space-between" mt="lg">
             <Checkbox label="Remember me" />
             <Anchor component="button" size="sm">
-              Forgot password?
+            <a href="../resetPassword">ForgotPassword</a>
             </Anchor>
           </Group>
           <Button type='submit' fullWidth mt="xl">

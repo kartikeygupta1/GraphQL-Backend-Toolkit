@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); //req
 
-const url = "mongodb+srv://kartik:kartik@cluster0.ym9aqgp.mongodb.net/graphqlbackendtoolkit?retryWrites=true&w=majority&appName=Cluster0"
+const url = "mongodb+srv://user:ayush@cluster0.2ue1csn.mongodb.net/mydatabase1?retryWrites=true&w=majority&appName=Cluster0"
 
 //asynchromous funct - return Promise object
 mongoose.connect(url)
@@ -11,4 +11,5 @@ mongoose.connect(url)
     console.log(err);
 });
 
-console.log("Another Line");
+module.exports = mongoose;
+

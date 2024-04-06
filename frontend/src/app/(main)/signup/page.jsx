@@ -23,9 +23,9 @@ function SignUp() {
     },
   });
   
-  onSubmit: (values) => {
-
-    fetch('http://localhost:5000/post/add', {
+  onsubmit: (values) => {
+console.log(values);
+    fetch('http://localhost:5000/user/add', {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
@@ -58,7 +58,7 @@ function SignUp() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form onSubmit={form.onSubmit(console.log)}  >
+        <form onSubmit={form.onSubmit(onsubmit)}  >
         <TextInput label="Name" placeholder=" Full Name" {...form.getInputProps('name')}  required />
         <TextInput label="Email" placeholder="abc123@gmail.com" {...form.getInputProps('email')} required />
         <PasswordInput label="Password" placeholder="Your password" {...form.getInputProps('password')} required mt="md" />
@@ -66,7 +66,7 @@ function SignUp() {
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />
         </Group>
-        <Button type='submit' fullWidth mt="xl">
+        <Button   type='submit' fullWidth mt="xl">
           SignUp
         </Button>
         </form>

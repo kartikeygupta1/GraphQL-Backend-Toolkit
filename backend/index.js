@@ -1,21 +1,23 @@
 const express = require('express');
+const cors = require('cors');
 
-const postRouter = require('./router/postRouter'); // importing 
+
+const userRouter = require('./router/userRouter');
+// importing 
 
 const app = express();
 const port = 5000;
 
+
 //middleware
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
+app.use(express.json());
 
-app.use('/post' , postRouter);
 
-app.get('/', (req, res) => {
-    res.send('Response From Express')
-});
-
-app.get('/add', (req, res) => {
-    res.send('Add Response From Express')
-});
+app.use('/user', userRouter)
+ 
 
 app.listen(port, () => {
     console.log('Server Started');

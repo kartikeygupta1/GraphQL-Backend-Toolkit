@@ -2,7 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const Model = require('../models/signupModels');
+const Model = require('../models/userModel');
+
+
 
 
 router.post('/add', (req, res) => {
@@ -15,3 +17,7 @@ router.post('/add', (req, res) => {
       res.status(500).json(err); 
   });
 });
+
+
+module.exports = router;
+

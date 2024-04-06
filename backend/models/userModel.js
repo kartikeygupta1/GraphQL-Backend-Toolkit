@@ -1,10 +1,9 @@
-const { models } = require('mongoose');
+ 
 const { Schema, model} = require('../connection');
 
 const mySchema = new Schema({
-  name : {type: String, required: true},
   email : {type: String, required: true},
-  
+  name : {type: String, required: true},
   password : {type: String, required: true},
   cpassword : {type: String, required: true},
    
@@ -13,4 +12,4 @@ const mySchema = new Schema({
 });
 
 
-module.exports = model('signup', mySchema);
+module.exports = model('user', mySchema);

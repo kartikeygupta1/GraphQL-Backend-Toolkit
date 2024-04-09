@@ -76,7 +76,7 @@ export default function Home() {
               <Title className={classes.title}>
                 Graph <span className={classes.highlight}>QL</span> Querry Language <br /> Backend Toolkit
               </Title>
-              <Text c="dimmed" mt="md">
+              <Text   c="white" mt="md">
                 GRAPHQL Backend Toolkit aims to simplify the development process that allows developers
                 to write backend code in GRAPHQL easily and in less time
               </Text>

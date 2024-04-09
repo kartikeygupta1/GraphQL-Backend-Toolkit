@@ -87,7 +87,7 @@ function Navbar() {
   ));
 
   return (
-    <Box pb={120}>
+    <Box pb={5}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
 
@@ -194,9 +194,9 @@ function Navbar() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <a href="../login"><Button variant="default">Log in</Button></a>
+            <a href="http://localhost:3000/signup"><Button variant="default">Log in</Button></a>
 
-            <a href="../login"><Button>Sign up</Button></a>
+            <a href="http://localhost:3000/login"><Button>Sign up</Button></a>
 
           </Group>
         </ScrollArea>

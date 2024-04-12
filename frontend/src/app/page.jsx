@@ -10,7 +10,7 @@ import { Icon3dRotate } from '@tabler/icons-react';
 // Feature Section Imports
 import { SimpleGrid, Grid } from '@mantine/core';
 import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
-  
+  HEAD
 //Testimonials Imports
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
@@ -19,7 +19,7 @@ import Navbar from './(main)/navbar';
  
 
 //footer Imports
-  
+  f25b4eb0c30d2ac66b63f8251f9bd1ef2b60ecbf
 
 
 const features = [

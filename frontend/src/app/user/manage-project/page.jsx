@@ -1,6 +1,6 @@
 'use client';
 import { Image, Text, Container, ThemeIcon, Title, SimpleGrid } from '@mantine/core';
-import IMAGES from './images';
+// import IMAGES from './images';
 import classes from './FeaturesImages.module.css';
 
 import React from 'react'
@@ -57,18 +57,19 @@ const data = [
 ];
 
 
-  const items = data.map((item) => (
-    <div className={classes.item} key={item.image}>
-      <ThemeIcon variant="light" className={classes.itemIcon} size={60} radius="md">
-        <Image src={IMAGES[item.image]} />
-      </ThemeIcon>
+const items = data.map((item) => (
+  <div className={classes.item} key={item.image}>
+    <ThemeIcon variant="light" className={classes.itemIcon} size={60} radius="md">
+      {/* <Image src={IMAGES[item.image]} /> */}
+      <img src="" alt="" />
+    </ThemeIcon>
 
-      <div>
-        <Text fw={700} fz="lg" className={classes.itemTitle}>
-          {item.title}
-        </Text>
-        <Text c="dimmed">{item.description}</Text>
-      </div>
+    <div>
+      <Text fw={700} fz="lg" className={classes.itemTitle}>
+        {item.title}
+      </Text>
+      <Text c="dimmed">{item.description}</Text>
     </div>
-  ));
+  </div>
+));
 

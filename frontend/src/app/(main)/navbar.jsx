@@ -93,7 +93,7 @@ function Navbar() {
 
 
           <Group h="100%" gap={0} visibleFrom="sm">
-            <a href="#" className={classes.link}>
+            <a href="./" className={classes.link}>
               Home
             </a>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
@@ -149,8 +149,9 @@ function Navbar() {
           </Group>
 
           <Group visibleFrom="sm">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <a href="./login"><Button variant="default">Log in</Button></a>
+            <a href="./signup"> <Button>Sign up</Button></a>
+
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />

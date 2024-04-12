@@ -195,9 +195,9 @@ function Navbar() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <a href="http://localhost:3000/signup"><Button variant="default">Log in</Button></a>
+            <a href="./login"><Button variant="default">Log in</Button></a>
 
-            <a href="http://localhost:3000/login"><Button>Sign up</Button></a>
+            <a href="./signup"><Button>Sign up</Button></a>
 
           </Group>
         </ScrollArea>

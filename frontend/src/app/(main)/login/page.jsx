@@ -38,8 +38,8 @@ function Login() {
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <form onSubmit={loginForm.onSubmit(loginSubmit)}>
-          <TextInput label="Email" placeholder="enter email over here" {...loginForm.getInputProps('email')} required />
-          <PasswordInput label="Password" placeholder="Your password" {...loginForm.getInputProps('password')} required mt="md" />
+          <TextInput label="Email" placeholder="Enter email over here" {...loginForm.getInputProps('email')} required />
+          <PasswordInput label="Password" placeholder="Password over here" {...loginForm.getInputProps('password')} required mt="md" />
           <Group justify="space-between" mt="lg">
             <Checkbox label="Remember me" />
             <Anchor component="button" size="sm">

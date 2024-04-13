@@ -16,11 +16,11 @@ import classes from './sidebar.module.css';
 const data = [
   { link: '', label: 'Notifications', icon: IconBellRinging },
   { link: '', label: 'Billing', icon: IconReceipt2 },
-  { link: '', label: 'Security', icon: IconFingerprint },
+  { link: '', label: 'Reset Password', icon: IconFingerprint },
   { link: '', label: 'SSH Keys', icon: IconKey },
   { link: '', label: 'Databases', icon: IconDatabaseImport },
   { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+  { link: '', label: 'Profile', icon: IconSettings },
 ];
 
 export default function Sidebar() {

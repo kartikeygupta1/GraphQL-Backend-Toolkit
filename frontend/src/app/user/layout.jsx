@@ -10,6 +10,8 @@ const Layout = ({ children }) => {
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   return (
+
+    
     <AppShell
       header={{ height: 60 }}
       navbar={{
@@ -31,6 +33,7 @@ const Layout = ({ children }) => {
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
+
   )
 }
 

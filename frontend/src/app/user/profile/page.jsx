@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import React from 'react'
 
@@ -29,3 +30,5 @@ const UserProfile = () => {
 }
 
 export default UserProfile;
+=======
+>>>>>>> 2dbfc30f499f88c12ef65aaab78c1049f2a5b4fc

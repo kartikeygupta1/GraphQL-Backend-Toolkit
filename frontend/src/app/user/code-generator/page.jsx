@@ -29,6 +29,23 @@ const CodeGenerator = () => {
     }
   ]);
 
+  const [queryList, setQueryList] = useState(
+    [
+      {
+        name: 'unitledQuery',
+        parameters: [
+          {
+            name: 'id',
+            type: 'ID',
+            required: true
+          }
+        ],
+        return: 'User'
+      }
+    ]
+  )
+  
+
   const generateIndexCode = () => {
     return `var express = require("express")
       var { createHandler } = require("graphql-http/lib/use/express")
@@ -47,9 +64,17 @@ const CodeGenerator = () => {
     }).join('\n')
       }
        
-        type Query {
-          getMessage(id: ID!): Message
+
+        ${
+      queryList.map((item, index) => {
+        return `type Query {
+            ${item.name}(${item.parameters.map((parameter, index) => {
+          return `${parameter.name}: ${parameter.type}${parameter.required ? '!' : ''}`
+        }).join(', ')}): ${item.return}
+          }`
+      }).join('\n')
         }
+        
        
         type Mutation {
           createMessage(input: MessageInput): Message
@@ -118,6 +143,33 @@ const CodeGenerator = () => {
     }])
   }
 
+  const addNewField = (entityIndex) => {
+    let newSchemaList = [...schemaList];
+    newSchemaList[entityIndex].fields.push({
+      name: 'fieldname',
+      type: 'fieldtype'
+    })
+    setSchemaList(newSchemaList)
+  }
+
+  const addNewQuery = () => {
+    setQueryList([...queryList, 
+      {
+        name: 'untitled query',
+        parameters: [
+          {
+            name: 'parametername',
+            type: 'parametertype',
+            required: true
+          }
+        ],
+        return: 'returntype'
+      }
+    ])
+  }
+
+
+
   return (
     <div>
 
@@ -128,7 +180,7 @@ const CodeGenerator = () => {
             <Divider my={5} />
             <Accordion>
               {
-                schemaList.map((entity) => (
+                schemaList.map((entity, index) => (
                   <Accordion.Item key={entity.name} value={entity.name}>
                     <Accordion.Control >{entity.name}</Accordion.Control>
                     <Accordion.Panel>
@@ -143,7 +195,9 @@ const CodeGenerator = () => {
                             </Text>
                           </Flex>
                         ))
-                      }
+                      } 
+
+                      <Button onClick={() => addNewField(index)}>Add Field</Button>
 
                     </Accordion.Panel>
                   </Accordion.Item>
@@ -151,6 +205,34 @@ const CodeGenerator = () => {
               }
             </Accordion>
             <Button onClick={addNewEntity} mt={10}>Add Entity</Button>
+          </Box> <Box my={10}>
+            <Title order={4}>Querry Builder</Title>
+            <Divider my={5} />
+            <Accordion>
+              {
+                queryList.map((query) => (
+                  <Accordion.Item key={query.name} value={query.name}>
+                    <Accordion.Control >{query.name}</Accordion.Control>
+                    <Accordion.Panel>
+                      {
+                        query.parameters.map((parameter, index) => (
+                          <Flex justify={'space-between'}>
+                            <Title order={5}>
+                              {parameter.name}
+                            </Title>
+                            <Text size='sm' c="dimmed">
+                              {parameter.type}
+                            </Text>
+                          </Flex>
+                        ))
+                      }
+
+                    </Accordion.Panel>
+                  </Accordion.Item>
+                ))
+              }
+            </Accordion>
+            <Button onClick={addNewQuery} mt={10}>Add Query</Button>
           </Box>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 6 }}>

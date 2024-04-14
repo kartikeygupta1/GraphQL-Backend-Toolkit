@@ -1,5 +1,5 @@
 'use client';
-import { Accordion, Box, Button, Divider, Flex, Grid, Text, Title } from '@mantine/core';
+import { Accordion, Box, Button, Divider, Flex, Grid,  Text, Title, } from '@mantine/core';
 import React, { useState } from 'react'
 import { CodeBlock, dracula } from "react-code-blocks";
 
@@ -235,8 +235,9 @@ const CodeGenerator = () => {
             <Button onClick={addNewQuery} mt={10}>Add Query</Button>
           </Box>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 6 }}>
+        <Grid.Col span={{ base: 12, xs: 6 }}   >
           <CodeBlock
+              
             text={generateIndexCode()}
             language='javascript'
             showLineNumbers={true}

@@ -45,7 +45,7 @@ export default function Sidebar() {
   return (
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
-        <Button size='md' w='100%'>New Project</Button>
+        <Button  size='md' w='100%'>New Project</Button>
         <Divider my='lg' />
         {links}
       </div>

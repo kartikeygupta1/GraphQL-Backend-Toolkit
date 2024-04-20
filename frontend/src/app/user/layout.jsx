@@ -25,7 +25,8 @@ const Layout = ({ children }) => {
         <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
-          <Title order={3}>QueryQL</Title>
+          <a href="../"> <Title order={3}>QueryQL</Title> </a>
+          
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>

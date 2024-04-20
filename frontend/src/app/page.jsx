@@ -116,9 +116,13 @@ export default function Home() {
           </Box>
         </Group>
         <Group mt={30}>
-          <Button radius="xl" size="md" className={classes.control}>
+        <a href="../user/code-generator">
+        <Button radius="xl" size="md" className={classes.control}>
             Start Generating Querry
           </Button>
+
+        </a>
+         
           <Button variant="default" radius="xl" size="md" className={classes.control}>
             Help
           </Button>
@@ -135,7 +139,7 @@ export default function Home() {
               <Text c="dimmed">
                 It will generate Querry as the developer want to use it in there website.
               </Text>
-
+              <a href="../user/code-generator">
               <Button
                 variant="gradient"
                 gradient={{ deg: 133, from: 'blue', to: 'cyan' }}
@@ -145,6 +149,9 @@ export default function Home() {
               >
                 Start Generating Querry
               </Button>
+
+              </a>
+              
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 7 }}>
               <SimpleGrid cols={{ base: 1, md: 2 }} spacing={30}>

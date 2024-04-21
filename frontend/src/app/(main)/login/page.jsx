@@ -5,9 +5,12 @@ import {
 } from '@mantine/core';
 import classes from './AuthenticationTitle.module.css';
 import { useForm } from '@mantine/form';
-import { toast } from 'react';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 function Login() {
+
+  const router = useRouter();
 
   const loginForm = useForm({
     initialValues: {

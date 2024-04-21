@@ -4,6 +4,7 @@ import {
 } from '@mantine/core';
 import classes from './AuthenticationTitle.module.css';
 import { useForm } from '@mantine/form';
+import toast from 'react-hot-toast';
 
 
 

@@ -25,8 +25,6 @@ const ManageProjects = () => {
   const [selProject, setSelProject] = useState(null);
 
   const nameRef = useRef();
-  const [opened, { open, close }] = useDisclosure(false);
-
 
   const addNewProject = () => {
 
@@ -142,17 +140,6 @@ const ManageProjects = () => {
     <>
       <Container size={700} className={classes.wrapper}>
         <div>
-
-          <Modal opened={opened} onClose={close} withCloseButton={false}>
-            Modal without header, press escape or click on overlay to close
-            <Title>Project Description</Title>
-            <Button className='btn-close' color='none' onClick={toggleOpen}></Button>
-          </Modal>
-
-          <Button onClick={open} >Open Modal</Button>
-          
-
-
           <div>
             <div className="container-fluid">
               <div className="row">

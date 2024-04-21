@@ -1,5 +1,6 @@
+'use client';
 import { useState } from 'react';
-import { Group, Code, Button, Divider } from '@mantine/core';
+import { Group, Code, Button, Divider, Modal, Title } from '@mantine/core';
 import {
   IconBellRinging,
   IconFingerprint,
@@ -12,6 +13,8 @@ import {
   IconLogout,
 } from '@tabler/icons-react';
 import classes from './sidebar.module.css';
+import { useDisclosure } from '@mantine/hooks';
+import Link from 'next/link';
 
 const data = [
   { link: '', label: 'Notifications', icon: IconBellRinging },
@@ -25,9 +28,10 @@ const data = [
 
 export default function Sidebar() {
   const [active, setActive] = useState('Billing');
+  const [opened, toggleModel] = useDisclosure(false);
 
   const links = data.map((item) => (
-    <a
+    <Link
       className={classes.link}
       data-active={item.label === active || undefined}
       href={item.link}
@@ -39,13 +43,18 @@ export default function Sidebar() {
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (
     <nav className={classes.navbar}>
+      <Modal opened={opened} onClose={toggleModel.close} withCloseButton={false}>
+        Modal without header, press escape or click on overlay to close
+        <Title>Project Description</Title>
+        <Button className='btn-close' color='none' onClick={toggleModel.open}></Button>
+      </Modal>
       <div className={classes.navbarMain}>
-        <Button  size='md' w='100%'>New Project</Button>
+        <Button size='md' w='100%' onClick={toggleModel.open}>New Project</Button>
         <Divider my='lg' />
         {links}
       </div>

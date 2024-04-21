@@ -5,6 +5,7 @@ import {
 } from '@mantine/core';
 import classes from './AuthenticationTitle.module.css';
 import { useForm } from '@mantine/form';
+import { toast } from 'react';
 
 function Login() {
 
@@ -20,8 +21,32 @@ function Login() {
     },
   });
 
-  const loginSubmit = (values) => {
+  const loginSubmit = async (values) => {
     console.log(values);
+
+      const res = await fetch('http://localhost:5000/user/authenticate', {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      });
+      console.log(res.status)
+      
+      if (res.status === 200) {
+        toast.success("Login successfull")
+        
+        const data = await res.json();
+        console.log(data);
+        sessionStorage.setItem('user', JSON.stringify(data));
+        // action.resetForm();
+        router.push('/user/manage-project');
+      }
+      else if (res.status === 400
+      ) {
+        toast.error("Error")
+      }
   }
 
   return (

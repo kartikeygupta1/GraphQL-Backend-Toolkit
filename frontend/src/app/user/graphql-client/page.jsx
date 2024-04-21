@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { Button, Grid, Title } from '@mantine/core';
+import { getDisplayName } from 'next/dist/shared/lib/utils';
 
 const DEFAULT_VARIABLE = `{
     "productname": "smartphone",
@@ -127,8 +128,8 @@ const GraphQLClient = () => {
                 </Nav.Item>
             </Nav> */}
       <div className="container-fluid mt-3">
-        <div className="row">
-          <div className="col-md-6">
+        <div className="row" >
+          <div className="col-md-6 " >
             <div className="form-group text-white">
               <label htmlFor="document">Documentation</label>
 
@@ -162,9 +163,23 @@ const GraphQLClient = () => {
                     </div>
                   </li>
 
+                  <li className='list-group-item'>
+                    <div className='d-flex justify-content-between'>
+                      <p>GenerateUpdateMutation</p>
+                      <Button className='btn btn-primary' onClick={generateUpdateMutation}>Generate Mutation</Button>
+                    </div>
+                  </li>
+
+                  <li className='list-group-item'>
+                    <div className='d-flex justify-content-between'>
+                      <p>Delete Mutatiion</p>
+                      <Button className='btn btn-primary' onClick={generateDeleteMutation}>Generate Mutation</Button>
+                    </div>
+                  </li>
+
                 </ul>
                 {/* <textarea className="form-control" id="document" rows="15"></textarea> */}
-              </div>
+            </div>
         </div>
 
         <div>

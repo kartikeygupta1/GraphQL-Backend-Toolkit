@@ -7,10 +7,12 @@ import classes from './AuthenticationTitle.module.css';
 import { useForm } from '@mantine/form';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import useAppContext from '@/context/AppContext';
 
 function Login() {
 
   const router = useRouter();
+  const {setCurrentUser, setLoggedIn} = useAppContext();
 
   const loginForm = useForm({
     initialValues: {
@@ -40,15 +42,17 @@ function Login() {
       if (res.status === 200) {
         toast.success("Login successfull")
         
-        const data = await res.json();
-        console.log(data);
-        sessionStorage.setItem('user', JSON.stringify(data));
-        // action.resetForm();
-        router.push('/user/manage-project');
+        res.json()
+        .then((data) => {
+          console.log(data);
+          setLoggedIn(true);
+          setCurrentUser(data);
+          sessionStorage.setItem('user', JSON.stringify(data));
+          router.push('/user/manage-project');
+        })
       }
-      else if (res.status === 400
-      ) {
-        toast.error("Error")
+      else if (res.status === 400) {
+        toast.error("Invalid credentials")
       }
   }
 

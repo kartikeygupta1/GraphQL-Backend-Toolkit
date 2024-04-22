@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import useAppContext from './AppContext';
 
 const GraphContext = createContext();
 
@@ -55,13 +56,35 @@ export const GraphProvider = ({ children }) => {
     const [entityList, setEntityList] = useState(null);
     const [mongoDbUrl, setMongoDbUrl] = useState('');
     const [projectId, setProjectId] = useState('');
+    const [projectList, setProjectList] = useState([]);
+    const [projectName, setProjectName] = useState('');
+
+    const { currentUser } = useAppContext();
+
+    const fetchProjectsData = () => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/project/getbyuser`, {
+          headers:{
+            'x-auth-token': currentUser.token,
+          }
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            setProjectList(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
 
     const loadProject = (project) => {
+        // console.log(project);
         setProjectId(project._id);
         setQueryList(project.config.queryList);
         setMutationList(project.config.mutationList);
         setEntityList(project.config.entityList);
         setMongoDbUrl(project.config.mongoDbUrl);
+        setProjectName(project.name);
     }
 
     const isProjectLoading = () => {
@@ -213,6 +236,7 @@ export const GraphProvider = ({ children }) => {
 
     return (
         <GraphContext.Provider value={{
+            fetchProjectsData,
             queryList,
             mutationList,
             entityList,
@@ -236,8 +260,13 @@ export const GraphProvider = ({ children }) => {
             updateMutationName,
             updateMutationParameter,
             updateMutationReturnType,
-            removeMutationParameter
+            removeMutationParameter,
 
+            projectList,
+            setProjectList,
+            projectName,
+            setProjectName,
+            projectId
 
         }}>
             {children}

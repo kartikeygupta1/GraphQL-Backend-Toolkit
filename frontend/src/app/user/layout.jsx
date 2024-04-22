@@ -1,17 +1,23 @@
 'use client';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AppShell, Burger, Group, Skeleton, Title } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Sidebar from './Sidebar';
+import useGraphContext from '@/context/GraphContext';
 
 const Layout = ({ children }) => {
 
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
+  const { fetchProjectsData } = useGraphContext();
+  
+  useEffect(() => {
+    fetchProjectsData();
+  }, [])
+
   return (
 
-    
     <AppShell
       header={{ height: 60 }}
       navbar={{

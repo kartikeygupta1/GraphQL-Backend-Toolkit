@@ -14,6 +14,9 @@ import QueryHandler from './QueryHandler';
 import MutationHandler from './MutationHandler';
 import { crudOperations } from '../CrudGenerator';
 import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
+import { Button } from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons-react';
+import Link from 'next/link';
 // import videoBg from '../assets/Untitled_design.mp4';
 
 const QueryGenerator = () => {
@@ -284,7 +287,9 @@ const QueryGenerator = () => {
       ) : (
         <div>
           <div className="text-center">
-           <button className='btn btn-success mb-5 w-25' onClick={updateProjectData}>Update Changes</button>
+           <Button component={Link} href='/user/manage-project' onClick={updateProjectData} leftSection={<IconArrowLeft/>}>Back</Button>
+           <Button onClick={updateProjectData}>Update Changes</Button>
+           <Button onClick={updateProjectData}>Delete Project</Button>
          </div>
           <AppHandler />
           <EntityHandler />

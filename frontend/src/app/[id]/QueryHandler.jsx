@@ -16,9 +16,10 @@ const QuerryHandler = () => {
 
 
             <Accordion defaultActiveKey="0">
-                
+
             </Accordion>
 
 
 
         </div>
+    );

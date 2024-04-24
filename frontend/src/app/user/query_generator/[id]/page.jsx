@@ -14,6 +14,9 @@ import QueryHandler from './QueryHandler';
 import MutationHandler from './MutationHandler';
 import { crudOperations } from '../CrudGenerator';
 import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
+import { Box, Button, Divider, Grid, Group, Stack } from '@mantine/core';
+import { IconArrowLeft } from '@tabler/icons-react';
+import Link from 'next/link';
 // import videoBg from '../assets/Untitled_design.mp4';
 
 const QueryGenerator = () => {
@@ -283,32 +286,31 @@ const QueryGenerator = () => {
         <h3 className='text-muted display-3 my-4 text-center'>Loading ... </h3>
       ) : (
         <div>
-          <div className="text-center">
-           <button className='btn btn-success mb-5 w-25' onClick={updateProjectData}>Update Changes</button>
-         </div>
+          <Group gap={10} mb={10}>
+            <Button component={Link} href='/user/manage-project' onClick={updateProjectData} leftSection={<IconArrowLeft />}>Back</Button>
+            <Button onClick={updateProjectData}>Update Changes</Button>
+            <Button onClick={updateProjectData}>Delete Project</Button>
+          </Group>
+          <Divider/>
           <AppHandler />
           <EntityHandler />
-          <div className="p-4">
-            <div className="row">
-              <div className="col-md-5">
+          <Box p={4}>
+            <Grid>
+              <Grid.Col span={{ base: 12, md: 3 }}>
                 <QueryHandler />
                 <MutationHandler />
-              </div>
-              <div className="col-md-7">
-                <MDBCard>
-                  <MDBCardBody>
-                    <CodeBlock
-                      text={generateGraphQLSchema()}
-                      language='javascript'
-                      showLineNumbers={true}
-                      wrapLines={true}
-                      theme={dracula}
-                    />
-                  </MDBCardBody>
-                </MDBCard>
-              </div>
-            </div>
-          </div>
+              </Grid.Col>
+              <Grid.Col span={{ base: 12, md: 9 }}>
+                <CodeBlock
+                  text={generateGraphQLSchema()}
+                  language='javascript'
+                  showLineNumbers={true}
+                  wrapLines={true}
+                  theme={dracula}
+                />
+              </Grid.Col>
+            </Grid>
+          </Box>
         </div>
       )
     }

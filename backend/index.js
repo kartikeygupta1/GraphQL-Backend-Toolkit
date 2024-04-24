@@ -3,6 +3,7 @@ const cors = require('cors');
 
 
 const userRouter = require('./router/userRouter');
+const projectRouter = require('./router/projectRouter');
 // importing 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 
 app.use('/user', userRouter)
+app.use('/project', projectRouter)
  
 
 app.listen(port, () => {

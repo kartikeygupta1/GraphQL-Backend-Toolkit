@@ -2,6 +2,7 @@
 import React from 'react'
 import useGraphContext from '@/context/GraphContext';
 import { CopyBlock, dracula } from 'react-code-blocks';
+import { Box, Grid, Text, TextInput } from '@mantine/core';
 
 const AppHandler = () => {
 
@@ -31,45 +32,24 @@ mongoose.exports = mongoose;`
     }
 
     return (
-        <div className='row p-4'>
-            {/* For MongoDB URL */}
-            <div className="col-md-5">
-                <div className="card">
-                    <div className="card-header">
-                        <h4>Query</h4>
-                    </div>
-                    <div className="card-body">
-                        <p>To get started, provide the MongoDB URL for the database you want to connect to.</p>
-                        <label htmlFor="MongoDB URL">MongoDB URL :&nbsp;</label>
-                        <input type="text" className='form-control' id="MongoDB URL" value={mongoDbUrl} onChange={(e) => {
-                            setMongoDbUrl(e.target.value);
-                        }}
-                        />
-                    </div>
-                </div>
-            </div>
-            {/* For App.js code */}
-            <div className="col-md-7">
-                <div className="card">
-                    {/* <div className="card-header d-flex justify-content-between">
-                        <h4>App.js Code</h4>
-                        <button onClick={handleCopyClickAppCode} className='btn btn-primary btn-outline-primary btn-rounded'>
-                            <i className="fa-regular fa-copy"></i>  Copy
-                        </button>
-                    </div> */}
-                    <div className="card-body">
-                        <CopyBlock
-                            theme={dracula}
-                            text={generateAppCode()}
-                            language={'JavaScript'}
-                            showLineNumbers={true}
-                            wrapLines
-                        />
-                        {/* <Editor theme='vs-dark' height="50vh" defaultLanguage="javascript" value={generateAppCode()} /> */}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Grid p={4} gutter={20}>
+            <Grid.Col span={{ base: 12, md: 3 }}>
+                <Text>To get started, provide the MongoDB URL for the database you want to connect to.</Text>
+                <TextInput label="MongoDB URL" type="text" value={mongoDbUrl} onChange={(e) => {
+                    setMongoDbUrl(e.target.value);
+                }}
+                />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, md: 9 }}>
+                <CopyBlock
+                    theme={dracula}
+                    text={generateAppCode()}
+                    language={'JavaScript'}
+                    showLineNumbers={true}
+                    wrapLines
+                />
+            </Grid.Col>
+        </Grid>
     )
 }
 

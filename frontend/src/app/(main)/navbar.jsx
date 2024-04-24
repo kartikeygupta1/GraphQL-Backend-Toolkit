@@ -29,6 +29,7 @@ import {
   IconChevronDown,
 } from '@tabler/icons-react';
 import classes from './navbar.module.css';
+import Link from 'next/link';
 
 const mockdata = [
   {
@@ -93,9 +94,9 @@ function Navbar() {
 
 
           <Group h="100%" gap={0} visibleFrom="sm">
-            <a href="./" className={classes.link}>
+            <Link href="/" className={classes.link}>
               Home
-            </a>
+            </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <a href="#" className={classes.link}>

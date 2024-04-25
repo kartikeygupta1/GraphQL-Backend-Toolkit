@@ -34,33 +34,7 @@ import Link from 'next/link';
 const mockdata = [
   {
     icon: IconCode,
-    title: 'Open source',
-    description: 'This Pokémon’s cry is very loud and distracting',
-  },
-  {
-    icon: IconCoin,
-    title: 'Free for everyone',
-    description: 'The fluid of Smeargle’s tail secretions changes',
-  },
-  {
-    icon: IconBook,
-    title: 'Documentation',
-    description: 'Yanma is capable of seeing 360 degrees without',
-  },
-  {
-    icon: IconFingerprint,
-    title: 'Security',
-    description: 'The shell’s rounded shape and the grooves on its.',
-  },
-  {
-    icon: IconChartPie3,
-    title: 'Analytics',
-    description: 'This Pokémon uses its flying ability to quickly chase',
-  },
-  {
-    icon: IconNotification,
-    title: 'Notifications',
-    description: 'Combusken battles with the intensely hot flames it spews',
+    title: 'Log In First',
   },
 ];
 
@@ -80,7 +54,7 @@ function Navbar() {
             {item.title}
           </Text>
           <Text size="xs" c="dimmed">
-            {item.description}
+            {item.link}
           </Text>
         </div>
       </Group>
@@ -96,13 +70,18 @@ function Navbar() {
           <Group h="100%" gap={0} visibleFrom="sm">
             <Link href="/" className={classes.link}>
               Home
+<<<<<<< HEAD
             </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
+=======
+            </a>
+            <HoverCard width={200} position="bottom" radius="md" shadow="md" withinPortal>
+>>>>>>> e81be95fee91e244862c62e10225cbec30328fa2
               <HoverCard.Target>
-                <a href="#" className={classes.link}>
+                <a href="./login" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                    GraphQlClient
                     </Box>
                     <IconChevronDown
                       style={{ width: rem(16), height: rem(16) }}
@@ -113,38 +92,19 @@ function Navbar() {
               </HoverCard.Target>
 
               <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
-                <Group justify="space-between" px="md">
-                  <Text fw={500}>Features</Text>
-                  <Anchor href="#" fz="xs">
-                    View all
-                  </Anchor>
-                </Group>
+                {links}
+                <a href="./login"><Button variant="default">Log in</Button></a>
 
-                <Divider my="sm" />
-
-                <SimpleGrid cols={2} spacing={0}>
-                  {links}
-                </SimpleGrid>
-
-                <div className={classes.dropdownFooter}>
-                  <Group justify="space-between">
-                    <div>
-                      <Text fw={500} fz="sm">
-                        Get started
-                      </Text>
-                      <Text size="xs" c="dimmed">
-                        Their food sources have decreased, and their numbers
-                      </Text>
-                    </div>
-                    <Button variant="default">Get started</Button>
-                  </Group>
-                </div>
               </HoverCard.Dropdown>
             </HoverCard>
+<<<<<<< HEAD
             <Link href="../user/graphql-client" className={classes.link}>
               GraphQlClient
             </Link>
             <Link href="../user/manage-project" className={classes.link}>
+=======
+            <a href="../user/code-generator" className={classes.link}>
+>>>>>>> e81be95fee91e244862c62e10225cbec30328fa2
               CodeGenerator
             </Link>
           </Group>

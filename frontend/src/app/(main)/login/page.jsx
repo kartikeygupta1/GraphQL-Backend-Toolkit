@@ -57,6 +57,18 @@ function Login() {
   }
 
   return (
+      <div 
+      style={{
+        backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        
+      }}
+      >
+
+
+
     <Container size={420} my={40}>
       <Title ta="center" className={classes.title}>
         Welcome back!
@@ -84,6 +96,7 @@ function Login() {
         </form>
       </Paper>
     </Container>
+      </div>
   );
 }
 

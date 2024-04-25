@@ -1,6 +1,6 @@
 'use client';
 
-import { Image, Text, Container, ThemeIcon, Title, SimpleGrid, Button, Modal, Grid } from '@mantine/core';
+import { Image, Text, Container, ThemeIcon, Title, SimpleGrid, Button, Modal, Grid, useMantineTheme, Group, Badge, Card, Center } from '@mantine/core';
 
 // import IMAGES from './images';
 import classes from './FeaturesImages.module.css';
@@ -12,17 +12,13 @@ import useGraphContext from '@/context/GraphContext';
 import useAppContext from '@/context/AppContext';
 import Link from 'next/link';
 
+ 
 
 
 
 const ManageProjects = () => {
 
-  
-    const demoProps = {
-      bg: 'var(--mantine-color-blue-light)',
-      h: 100,
-      mt: 'md',
-    };
+  const theme = useMantineTheme();
 
   const [selProject, setSelProject] = useState(null);
 
@@ -55,73 +51,94 @@ const ManageProjects = () => {
     });
   }
 
+
+
   return (
     <>
-
-<Grid Grow>
-  <Grid.Col span={6}>
-   
-                {
-                    !isProjectLoading() && (
-                      <div className='mt-3'>
-                        <Container>
-   
-
-                        <h1>{projectName}</h1>
-                        </Container>
-                        {/* <p>{selProject.tagline}</p> */}
-
-                        <h3>Queries : {queryList.length}</h3>
-                        <ul className='list-group'>
-                          {
-                            queryList.map(query => (
-                              <li className='list-group-item'>
-                                {query.name}
-                              </li>
-                            ))
-                          }
-                        </ul>
-                        <h3>Mutation : {mutationList.length}</h3>
-                        <ul className='list-group'>
-                          {
-                            mutationList.map(mutation => (
-                              <li className='list-group-item'>
-                                {mutation.name}
-                              </li>
-                            ))
-                          }
-                        </ul>
-                        <h3>Entity : {entityList.length}</h3>
-                        <ul className='list-group'>
-                          {
-                            entityList.map(entity => (
-                              <li className='list-group-item'>
-                                {entity.name}
-                              </li>
-                            ))
-                          }
-                        </ul>
-                        <div className="d-flex gap-5 justify-content-center">
-                          <Button component={Link} href={'/user/query_generator/' + projectId}>Edit Project</Button>
-                        </div>
-                        {/* {projectId} */}
-                      </div>
-                    )
-                  }
-  
-  
-  </Grid.Col>
-
-  
-   
-</Grid>
-      
+      <Card  withBorder padding="xl" radius="md" className={classes.card}>
 
 
+        {
+          !isProjectLoading() && (
+            <div  >
+
+              <Text fw={700} className={classes.title} mt="xl">
+                <h1 >{projectName}</h1>
+              </Text>
+
+
+              <Grid>
+                <Grid.Col span={4}>
+                  <h3>Queries: {queryList.length}</h3>
+                   
+                    {
+                      queryList.map(query => (
+                        <p>
+                          {query.name}
+                        </p>
+                      ))
+                    }
+                  
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <h3>Mutation : {mutationList.length}</h3>
+                   
+                    {
+                      mutationList.map(mutation => (
+                        <p className='list-group-item'>
+                          {mutation.name}
+                        </p>
+                      ))
+                    }
+                 
+
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <h3>Entity : {entityList.length}</h3>
+                   
+                    {
+                      entityList.map(entity => (
+                        <p className='list-group-item'>
+                          {entity.name}
+                        </p>
+                      ))
+                    }
+                 
+                </Grid.Col>
+              </Grid>
+
+
+              <div className="d-flex gap-5 justify-content-center ">
+
+                <center  >
+
+                <Button component={Link} href={'/user/query_generator/' + projectId}>Edit Project</Button>
+                </center>
+                
+              </div>
+              
+            </div>
+          )
+        }
+
+
+      </Card>
 
 
 
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
     </>
   );
 }

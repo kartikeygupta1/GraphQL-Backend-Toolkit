@@ -47,6 +47,18 @@ function SignUp() {
 
 
   return (
+    <div
+    style={{
+      backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      
+      
+      
+    }}
+    >
+
     <Container size={500} mb={40}>
       <Title ta="center" className={classes.title}>
         Create Account
@@ -73,6 +85,7 @@ function SignUp() {
         </form>
       </Paper>
     </Container>
+    </div>
   );
 }
 

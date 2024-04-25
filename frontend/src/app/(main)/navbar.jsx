@@ -141,17 +141,17 @@ function Navbar() {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="../user/graphql-client" className={classes.link}>
+            <Link href="../user/graphql-client" className={classes.link}>
               GraphQlClient
-            </a>
-            <a href="../user/code-generator" className={classes.link}>
+            </Link>
+            <Link href="../user/manage-project" className={classes.link}>
               CodeGenerator
-            </a>
+            </Link>
           </Group>
 
           <Group visibleFrom="sm">
-            <a href="./login"><Button variant="default">Log in</Button></a>
-            <a href="./signup"> <Button>Sign up</Button></a>
+            <Link href="./login"><Button variant="default">Log in</Button></Link>
+            <Link href="./signup"> <Button>Sign up</Button></Link>
 
           </Group>
 

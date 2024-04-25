@@ -10,16 +10,17 @@ import { Icon3dRotate } from '@tabler/icons-react';
 // Feature Section Imports
 import { SimpleGrid, Grid } from '@mantine/core';
 import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
-  
+
 //Testimonials Imports
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { Paper, useMantineTheme } from '@mantine/core';
 import Navbar from './(main)/navbar';
- 
+import Link from 'next/link';
+
 
 //footer Imports
-  
+
 
 
 const features = [
@@ -74,30 +75,30 @@ export default function Home() {
     <>
       <Navbar />
       <div className={classes.hero}>
-      <Overlay
-        gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
-        opacity={1}
-        zIndex={0}
-      />
-        
-      
-      <Container className={classes.container} size="md">
-        <Title className={classes.title}>Graph QL Querry Language
-Backend Toolkit </Title>
-        <Text className={classes.description} size="xl" mt="xl">
-        GRAPHQL Backend Toolkit aims to simplify the development process that allows developers to write backend code in GRAPHQL easily and in less time
-        </Text>
+        <Overlay
+          gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)"
+          opacity={1}
+          zIndex={0}
+        />
 
-        <a href="../user/code-generator">
-        <Button variant="gradient" size="xl" radius="xl" className={classes.control}>
-          Get started
-        </Button>
-        </a>
-       
-           
-      </Container>
-    </div>
-       
+
+        <Container className={classes.container} size="md">
+          <Title className={classes.title}>Graph QL Querry Language
+            Backend Toolkit </Title>
+          <Text className={classes.description} size="xl" mt="xl">
+            GRAPHQL Backend Toolkit aims to simplify the development process that allows developers to write backend code in GRAPHQL easily and in less time
+          </Text>
+
+          <Link href="../user/manage-project">
+            <Button variant="gradient" size="xl" radius="xl" className={classes.control}>
+              Get started
+            </Button>
+          </Link>
+
+
+        </Container>
+      </div>
+
       <Divider />
       <Container size="md" py="xl">
         <div className={classes.wrapper}>
@@ -109,19 +110,19 @@ Backend Toolkit </Title>
               <Text c="dimmed">
                 It will generate Querry as the developer want to use it in there website.
               </Text>
-              <a href="../user/code-generator">
-              <Button
-                variant="gradient"
-                gradient={{ deg: 133, from: 'blue', to: 'cyan' }}
-                size="lg"
-                radius="md"
-                mt="xl"
-              >
-                Start Generating Querry
-              </Button>
+              <Link href="../user/manage-project">
+                <Button
+                  variant="gradient"
+                  gradient={{ deg: 133, from: 'blue', to: 'cyan' }}
+                  size="lg"
+                  radius="md"
+                  mt="xl"
+                >
+                  Start Generating Querry
+                </Button>
 
-              </a>
-              
+              </Link>
+
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 7 }}>
               <SimpleGrid cols={{ base: 1, md: 2 }} spacing={30}>
@@ -133,7 +134,7 @@ Backend Toolkit </Title>
       </Container>
       <Container size={'md'}>
       </Container>
- 
+
     </>
   );
 }

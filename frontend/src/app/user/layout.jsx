@@ -4,6 +4,8 @@ import { AppShell, Burger, Group, Skeleton, Title } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Sidebar from './Sidebar';
 import useGraphContext from '@/context/GraphContext';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Layout = ({ children }) => {
 
@@ -11,7 +13,9 @@ const Layout = ({ children }) => {
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
   const { fetchProjectsData } = useGraphContext();
-  
+
+  const router = useRouter();
+
   useEffect(() => {
     fetchProjectsData();
   }, [])
@@ -31,8 +35,9 @@ const Layout = ({ children }) => {
         <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
-          <a href="../"> <Title order={3}>QueryQL</Title> </a>
-          
+          <Title  onClick={e => router.push('/')} order={3}>QueryQL</Title>
+          <Title onClick={e => router.push('../user/manage-project')} order={3}>CodeGenerator</Title>
+
         </Group>
       </AppShell.Header>
       <AppShell.Navbar>

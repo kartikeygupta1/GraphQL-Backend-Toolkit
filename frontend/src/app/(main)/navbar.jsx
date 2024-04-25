@@ -70,13 +70,8 @@ function Navbar() {
           <Group h="100%" gap={0} visibleFrom="sm">
             <Link href="/" className={classes.link}>
               Home
-<<<<<<< HEAD
             </Link>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
-=======
-            </a>
-            <HoverCard width={200} position="bottom" radius="md" shadow="md" withinPortal>
->>>>>>> e81be95fee91e244862c62e10225cbec30328fa2
               <HoverCard.Target>
                 <a href="./login" className={classes.link}>
                   <Center inline>
@@ -97,14 +92,10 @@ function Navbar() {
 
               </HoverCard.Dropdown>
             </HoverCard>
-<<<<<<< HEAD
             <Link href="../user/graphql-client" className={classes.link}>
               GraphQlClient
             </Link>
             <Link href="../user/manage-project" className={classes.link}>
-=======
-            <a href="../user/code-generator" className={classes.link}>
->>>>>>> e81be95fee91e244862c62e10225cbec30328fa2
               CodeGenerator
             </Link>
           </Group>

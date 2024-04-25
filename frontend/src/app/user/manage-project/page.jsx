@@ -1,6 +1,6 @@
 'use client';
 
-import { Image, Text, Container, ThemeIcon, Title, SimpleGrid, Button, Modal } from '@mantine/core';
+import { Image, Text, Container, ThemeIcon, Title, SimpleGrid, Button, Modal, Grid } from '@mantine/core';
 
 // import IMAGES from './images';
 import classes from './FeaturesImages.module.css';
@@ -13,7 +13,16 @@ import useAppContext from '@/context/AppContext';
 import Link from 'next/link';
 
 
+
+
 const ManageProjects = () => {
+
+  
+    const demoProps = {
+      bg: 'var(--mantine-color-blue-light)',
+      h: 100,
+      mt: 'md',
+    };
 
   const [selProject, setSelProject] = useState(null);
 
@@ -48,16 +57,18 @@ const ManageProjects = () => {
 
   return (
     <>
-      <Container size={700} className={classes.wrapper}>
-        <div>
-          <div>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-9">
-                  {
+
+<Grid Grow>
+  <Grid.Col span={6}>
+   
+                {
                     !isProjectLoading() && (
                       <div className='mt-3'>
+                        <Container>
+   
+
                         <h1>{projectName}</h1>
+                        </Container>
                         {/* <p>{selProject.tagline}</p> */}
 
                         <h3>Queries : {queryList.length}</h3>
@@ -97,14 +108,20 @@ const ManageProjects = () => {
                       </div>
                     )
                   }
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  
+  
+  </Grid.Col>
+
+  
+   
+</Grid>
+      
 
 
-      </Container>
+
+
+
+       
     </>
   );
 }

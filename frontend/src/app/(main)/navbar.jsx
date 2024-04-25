@@ -35,7 +35,7 @@ const mockdata = [
   {
     icon: IconCode,
     title: 'Log In First',
-  },
+  }
 ];
 
 function Navbar() {

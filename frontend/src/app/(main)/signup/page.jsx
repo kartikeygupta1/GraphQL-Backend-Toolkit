@@ -48,43 +48,46 @@ function SignUp() {
 
   return (
     <div
-    style={{
-      backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '100vh',
-      
-      
-      
-    }}
+      style={{
+        backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '20px',
+
+
+      }}
     >
 
-    <Container size={500} mb={40}>
-      <Title ta="center" className={classes.title}>
-        Create Account
-      </Title>
-      <Text c="dimmed" size="sm" ta="center" mt={5}>
-        Already have an account?{' '}
-        <a href="../login"><Anchor size="sm" component="button">
-          Login
-        </Anchor></a>
-      </Text>
+      <Container size={500} mb={40}>
+        <Title ta="center" className={classes.title}>
+          Create Account
+        </Title>
+        <Text c="dimmed" size="sm" ta="center" mt={5}>
+          Already have an account?{' '}
+          <a href="../login"><Anchor size="sm" component="button">
+            Login
+          </Anchor></a>
+        </Text>
 
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form onSubmit={form.onSubmit(signupSubmit)}>
-          <TextInput label="Name" placeholder=" Full Name" {...form.getInputProps('name')} required />
-          <TextInput label="Email" placeholder="abc123@gmail.com" {...form.getInputProps('email')} required />
-          <PasswordInput label="Password" placeholder="Your password" {...form.getInputProps('password')} required mt="md" />
-          <PasswordInput label="ConfirmPassword" placeholder="Re enter password" {...form.getInputProps('confirmPassword')} required mt="md" />
-          <Group justify="space-between" mt="lg">
-            <Checkbox label="Remember me" />
-          </Group>
-          <Button type='submit' fullWidth mt="xl">
-            SignUp
-          </Button>
-        </form>
-      </Paper>
-    </Container>
+        <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+          <form onSubmit={form.onSubmit(signupSubmit)}>
+            <TextInput label="Name" placeholder=" Full Name" {...form.getInputProps('name')} required />
+            <TextInput label="Email" placeholder="abc123@gmail.com" {...form.getInputProps('email')} required />
+            <PasswordInput label="Password" placeholder="Your password" {...form.getInputProps('password')} required mt="md" />
+            <PasswordInput label="ConfirmPassword" placeholder="Re enter password" {...form.getInputProps('confirmPassword')} required mt="md" />
+            <Group justify="space-between" mt="lg">
+              <Checkbox label="Remember me" />
+            </Group>
+            <Button type='submit' fullWidth mt="xl">
+              SignUp
+            </Button>
+          </form>
+        </Paper>
+      </Container>
     </div>
   );
 }

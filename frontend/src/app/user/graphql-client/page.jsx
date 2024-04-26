@@ -138,10 +138,11 @@ const GraphQLClient = () => {
           <div shadow="sm" >
             <div className="form-group text-white">
             <Grid.Col span={6}>
-              <label htmlFor="document">Documentation</label>
+            
 
               {/* <Title mt={10} mb={5}>Queries</Title> */}
-              <Center>Queries</Center>
+              <Center>
+                <h1>Queries</h1></Center>
               <ul className='list-group'>
                 <li className='list-group-item'>
                   <div className='d-flex justify-content-between'>
@@ -156,6 +157,7 @@ const GraphQLClient = () => {
                   </div>
                 </li>
               </ul>
+
               </Grid.Col>
               
             </div>
@@ -163,6 +165,7 @@ const GraphQLClient = () => {
 
           <div className="col-md-6">
           <Grid.Col span={6}>
+          
 
                 <Title mt={10} mb={5}>Mutations</Title>
                 <ul className='list-group'>
@@ -182,12 +185,13 @@ const GraphQLClient = () => {
 
                   <li className='list-group-item'>
                     <div className='d-flex justify-content-between'>
-                      <p>Delete Mutatiion</p>
+                      <p>Delete Mutation</p>
                       <Button className='btn btn-primary' onClick={generateDeleteMutation}>Generate Mutation</Button>
                     </div>
                   </li>
 
                 </ul>
+                
                 </Grid.Col>
                 {/* <textarea className="form-control" id="document" rows="15"></textarea> */}
             </div>
@@ -214,7 +218,7 @@ const GraphQLClient = () => {
             </Grid>
 
           </div>
-        <div className="col-md-4">
+        <div className="col-md-6">
           <div className="form-group text-white">
           <div className="text-center">
             <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Query</Button>

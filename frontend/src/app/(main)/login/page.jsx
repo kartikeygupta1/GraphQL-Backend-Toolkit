@@ -63,6 +63,10 @@ function Login() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '20px',
         
       }}
       >

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { Button, Grid, Title } from '@mantine/core';
 import { getDisplayName } from 'next/dist/shared/lib/utils';
+import { Center, Box } from '@mantine/core';
 
 const DEFAULT_VARIABLE = `{
     "productname": "smartphone",
@@ -127,13 +128,20 @@ const GraphQLClient = () => {
                     </Nav.Link>
                 </Nav.Item>
             </Nav> */}
+    <Center >
+    
       <div className="container-fluid mt-3">
+      
         <div className="row" >
-          <div className="col-md-6 " >
+        <Grid>
+             
+          <div shadow="sm" >
             <div className="form-group text-white">
+            <Grid.Col span={6}>
               <label htmlFor="document">Documentation</label>
 
-              <Title mt={10} mb={5}>Queries</Title>
+              {/* <Title mt={10} mb={5}>Queries</Title> */}
+              <Center>Queries</Center>
               <ul className='list-group'>
                 <li className='list-group-item'>
                   <div className='d-flex justify-content-between'>
@@ -148,12 +156,14 @@ const GraphQLClient = () => {
                   </div>
                 </li>
               </ul>
-
+              </Grid.Col>
               
             </div>
           </div>
 
           <div className="col-md-6">
+          <Grid.Col span={6}>
+
                 <Title mt={10} mb={5}>Mutations</Title>
                 <ul className='list-group'>
                   <li className='list-group-item'>
@@ -178,10 +188,13 @@ const GraphQLClient = () => {
                   </li>
 
                 </ul>
+                </Grid.Col>
                 {/* <textarea className="form-control" id="document" rows="15"></textarea> */}
             </div>
+            
+          </Grid>      
         </div>
-
+        </div></Center>
         <div>
 
             <Grid>
@@ -211,7 +224,7 @@ const GraphQLClient = () => {
             <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="javascript" value={response} onChange={setResponse} />
           </div>
         </div>
-      </div>
+      
     </div>
 
   )

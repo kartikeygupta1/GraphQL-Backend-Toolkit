@@ -105,7 +105,7 @@ const GraphQLClient = () => {
   }
 
   return (
-    <div className='vh-100 bg-dark pt-5'>
+    <div className='vh-100 bg-dark '>
       <div className='text-center'>
         {/* <input className='bg-dark border border-3 rounded-5 text-white m-2' id="url" type="text" defaultValue={'  http://localhost:3000'} /> */}
 

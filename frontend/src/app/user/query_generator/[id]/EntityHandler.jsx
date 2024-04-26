@@ -1,13 +1,9 @@
 'use client';
-import { Editor } from '@monaco-editor/react';
-import { MDBCard, MDBCardBody, MDBCheckbox, MDBRadio } from 'mdb-react-ui-kit';
 import React, { use, useRef, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { crudOperations } from '../CrudGenerator';
 import { CopyBlock, dracula } from 'react-code-blocks';
 import useGraphContext from '@/context/GraphContext';
 import { FIELD_TYPES } from '@/constants';
-import { Accordion, ActionIcon, Box, Button, Grid, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
+import { Accordion, ActionIcon, Box, Button, Divider, Grid, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 
 const CustomSelect = ({ data, ref }) => {
@@ -66,10 +62,10 @@ const EntityHandler = () => {
 
     return (
         <>
-            <Grid p={4}>
+            <Divider mt={30} />
+            <Grid p={4} mt={30}>
                 <Grid.Col span={{ base: 12, md: 3 }}>
-
-                    <h4>Operations</h4>
+                    <Title order={2} mt={10}>Entity Handler</Title>
                     <Accordion defaultValue="0">
                         {
                             entityList.map((entity, index) => {
@@ -112,7 +108,12 @@ const EntityHandler = () => {
                             })
                         }
                     </Accordion>
-                    <Button onClick={addNewEntity}>Add Entity</Button>
+                    <Button onClick={addNewEntity} mt={10} leftSection={
+
+                        <IconCirclePlus size={20} />
+                    }>
+                        Add Entity
+                    </Button>
 
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 9 }}>

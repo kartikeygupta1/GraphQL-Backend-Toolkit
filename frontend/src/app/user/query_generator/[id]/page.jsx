@@ -292,8 +292,11 @@ const QueryGenerator = () => {
             <Button onClick={updateProjectData}>Delete Project</Button>
           </Group>
           <Divider/>
+
           <AppHandler />
+
           <EntityHandler />
+
           <Box p={4}>
             <Grid>
               <Grid.Col span={{ base: 12, md: 3 }}>

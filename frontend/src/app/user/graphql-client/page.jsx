@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
-import { Button, Grid, Title } from '@mantine/core';
+import { Button, Card, Grid, Title } from '@mantine/core';
 import { getDisplayName } from 'next/dist/shared/lib/utils';
 import { Center, Box } from '@mantine/core';
 
@@ -128,107 +128,98 @@ const GraphQLClient = () => {
                     </Nav.Link>
                 </Nav.Item>
             </Nav> */}
-    <Center >
-    
-      <div className="container-fluid mt-3">
-      
-        <div className="row" >
+
+
+      <Grid>
+
+        <Grid.Col span={{ base: 12, md: 6 }}>
+
+
+          <Title mt={10} mb={5}>Queries</Title>
+          <Card withBorder shadow="xs" padding="md" radius="md">
+
+            <ul className='list-group'>
+              <li className='list-group-item'>
+                <div className='d-flex justify-content-between'>
+                  <p>Fetch Single Entity Query</p>
+                  <Button className='btn btn-primary' onClick={generateFetchSingleQuery}>Generate Query</Button>
+                </div>
+              </li>
+              <li className='list-group-item'>
+                <div className='d-flex justify-content-between'>
+                  <p>Fetch All Entity Query</p>
+                  <Button className='btn btn-primary' onClick={generateFetchAllQuery}>Generate Query</Button>
+                </div>
+              </li>
+            </ul>
+          </Card>
+
+        </Grid.Col>
+
+
+        <Grid.Col span={{ base: 12, md: 6 }}>
+
+
+          <Title mt={10} mb={5}>Mutations</Title>
+          <Card withBorder shadow="xs" padding="md" radius="md">
+            <ul className='list-group'>
+              <li className='list-group-item'>
+                <div className='d-flex justify-content-between'>
+                  <p>Add Single Entity Mutation</p>
+                  <Button className='btn btn-primary' onClick={generateNewMutation}>Generate Mutation</Button>
+                </div>
+              </li>
+
+              <li className='list-group-item'>
+                <div className='d-flex justify-content-between'>
+                  <p>GenerateUpdateMutation</p>
+                  <Button className='btn btn-primary' onClick={generateUpdateMutation}>Generate Mutation</Button>
+                </div>
+              </li>
+
+              <li className='list-group-item'>
+                <div className='d-flex justify-content-between'>
+                  <p>Delete Mutation</p>
+                  <Button className='btn btn-primary' onClick={generateDeleteMutation}>Generate Mutation</Button>
+                </div>
+              </li>
+
+            </ul>
+          </Card>
+
+        </Grid.Col>
+
+      </Grid>
+      <div>
+
         <Grid>
-             
-          <div shadow="sm" >
-            <div className="form-group text-white">
-            <Grid.Col span={6}>
-            
-
-              {/* <Title mt={10} mb={5}>Queries</Title> */}
-              <Center>
-                <h1>Queries</h1></Center>
-              <ul className='list-group'>
-                <li className='list-group-item'>
-                  <div className='d-flex justify-content-between'>
-                    <p>Fetch Single Entity Query</p>
-                    <Button className='btn btn-primary' onClick={generateFetchSingleQuery}>Generate Query</Button>
-                  </div>
-                </li>
-                <li className='list-group-item'>
-                  <div className='d-flex justify-content-between'>
-                    <p>Fetch All Entity Query</p>
-                    <Button className='btn btn-primary' onClick={generateFetchAllQuery}>Generate Query</Button>
-                  </div>
-                </li>
-              </ul>
-
-              </Grid.Col>
-              
-            </div>
-          </div>
-
-          <div className="col-md-6">
-          <Grid.Col span={6}>
-          
-
-                <Title mt={10} mb={5}>Mutations</Title>
-                <ul className='list-group'>
-                  <li className='list-group-item'>
-                    <div className='d-flex justify-content-between'>
-                      <p>Add Single Entity Mutation</p>
-                      <Button className='btn btn-primary' onClick={generateNewMutation}>Generate Mutation</Button>
-                    </div>
-                  </li>
-
-                  <li className='list-group-item'>
-                    <div className='d-flex justify-content-between'>
-                      <p>GenerateUpdateMutation</p>
-                      <Button className='btn btn-primary' onClick={generateUpdateMutation}>Generate Mutation</Button>
-                    </div>
-                  </li>
-
-                  <li className='list-group-item'>
-                    <div className='d-flex justify-content-between'>
-                      <p>Delete Mutation</p>
-                      <Button className='btn btn-primary' onClick={generateDeleteMutation}>Generate Mutation</Button>
-                    </div>
-                  </li>
-
-                </ul>
-                
-                </Grid.Col>
-                {/* <textarea className="form-control" id="document" rows="15"></textarea> */}
-            </div>
-            
-          </Grid>      
-        </div>
-        </div></Center>
-        <div>
-
-            <Grid>
-              <Grid.Col span={{ base: 12, xs: 6 }}>
-                <label htmlFor="variables">Variables</label>
-                <Editor theme='vs-dark' id="query" height="40vh" defaultLanguage="javascript" value={query} onChange={setQuery} />
+          <Grid.Col span={{ base: 12, xs: 6 }}>
+            <label htmlFor="variables">Variables</label>
+            <Editor theme='vs-dark' id="query" height="40vh" defaultLanguage="javascript" value={query} onChange={setQuery} />
 
 
-              </Grid.Col>
+          </Grid.Col>
 
-              <Grid.Col span={{ base: 12, xs: 6 }}>
-                <label htmlFor="query">Operation</label>
-                <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="javascript" value={variables} onChange={setVariables} />
+          <Grid.Col span={{ base: 12, xs: 6 }}>
+            <label htmlFor="query">Operation</label>
+            <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="javascript" value={variables} onChange={setVariables} />
 
-              </Grid.Col>
+          </Grid.Col>
 
-            </Grid>
+        </Grid>
 
-          </div>
-        <div className="col-md-6">
-          <div className="form-group text-white">
+      </div>
+      <div className="col-md-6">
+        <div className="form-group text-white">
           <div className="text-center">
             <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Query</Button>
           </div>
-            <label htmlFor="response">Response</label>
-            {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}
-            <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="javascript" value={response} onChange={setResponse} />
-          </div>
+          <label htmlFor="response">Response</label>
+          {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}
+          <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="javascript" value={response} onChange={setResponse} />
         </div>
-      
+      </div>
+
     </div>
 
   )

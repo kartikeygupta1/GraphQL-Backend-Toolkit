@@ -16,6 +16,20 @@ router.post('/add', (req, res) => {
         });
 });
 
+// for reset password
+
+router.get('/getbymail/:email', (req, res) => {
+    Model.findOne({ email: req.params.email })
+        .then((result) => {
+            if (result) res.status(200).json(result);
+            else res.status(404).json({ message: 'User not found' });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    console.log(req.body);
+});
+
 router.get('/getall', (req, res) => {
     Model.find()
         .then((result) => {

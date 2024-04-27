@@ -100,6 +100,12 @@ export default function Home() {
       </div>
 
       <Divider />
+      <div style={{ 
+            backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+
+       }}>
       <Container size="md" py="xl">
         <div className={classes.wrapper}>
           <Grid gutter={80}>
@@ -132,6 +138,7 @@ export default function Home() {
           </Grid>
         </div>
       </Container>
+      </div>
       <Container size={'md'}>
       </Container>
 

@@ -1,9 +1,27 @@
+
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
-import { ActionIcon, Stack, TextInput, Title } from '@mantine/core';
-import { IconTrash } from '@tabler/icons-react';
+
+import { Accordion, ActionIcon, Button, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
+import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import React, { useRef } from 'react'
-import { Accordion } from 'react-bootstrap'
+ 
+
+const CustomSelect = ({ data, ref }) => {
+    return <NativeSelect
+        ref={ref}
+        data={data}
+        rightSectionWidth={28}
+        styles={{
+            input: {
+                fontWeight: 500,
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0,
+                
+            },
+        }}
+    />
+}
 
 const QueryHandler = () => {
 
@@ -90,10 +108,17 @@ const QueryHandler = () => {
                 }
             </Accordion>
              
-            <button className='btn btn-primary' onClick={addNewQuery}>Add Query</button>
+             
+            <Button mt={20} onClick={addNewQuery}
+                leftSection={
+                    <ActionIcon>
+                        <IconCirclePlus size={20} />
+                    </ActionIcon>
+                }
+            >Add Query</Button>
 
         </div>
     )
 }
 
-export default QueryHandler
+export default QueryHandler;

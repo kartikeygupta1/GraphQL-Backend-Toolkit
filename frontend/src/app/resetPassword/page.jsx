@@ -30,6 +30,7 @@ export default function ForgotPassword() {
         <Group justify="space-between" mt="lg" className={classes.controls}>
           <Anchor c="dimmed" size="sm" className={classes.control}>
             <Center inline>
+              
               <IconArrowLeft style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
              <a href="../login"> <Box ml={5}>Back to the login page</Box></a>
             </Center>

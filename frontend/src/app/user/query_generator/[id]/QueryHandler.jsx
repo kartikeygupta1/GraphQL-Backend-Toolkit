@@ -1,6 +1,7 @@
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
-import { Title } from '@mantine/core';
+import { ActionIcon, Stack, TextInput, Title } from '@mantine/core';
+import { IconTrash } from '@tabler/icons-react';
 import React, { useRef } from 'react'
 import { Accordion } from 'react-bootstrap'
 
@@ -21,51 +22,74 @@ const QueryHandler = () => {
 
     return (
         <div>
-            <Title order={2} mt={10}>Query Handler</Title>
+            <Title order={2} mt={30}>Query Handler</Title>
             <Accordion defaultActiveKey="0">
                 {
                     queryList.map((query, index) => {
-                        return <Accordion.Item eventKey={index}>
-                            <Accordion.Header>
-                                <input type="text" className='form-control' value={query.name} onChange={e => updateQueryName(index, e.target.value)} />
-                                <button className='btn btn-danger' onClick={e => removeQuery(index)}>Remove</button>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                                <ul className='list-group'>
+                        return <Accordion.Item key={index} value={query.name + index}>
+                            <Accordion.Control>
+                                <Title order={3}>{query.name}</Title>
+                                {/* <input type="text" className='form-control' value={mutation.name} onChange={
+                                    e => updateMutationName(index, e.target.value)
+                                } />
+                                <button className='btn btn-danger' onClick={e => removeMutation(index)}>Remove</button> */}
+                            </Accordion.Control>
+                            <Accordion.Panel>
+                                <TextInput my={10} rightSection={
+                                    <ActionIcon color='red' onClick={e => removeQuery(index)}>
+                                        <IconTrash size={15} />
+                                    </ActionIcon>
+                                } label="Update Query name" value={query.name} onChange={e => updateQueryName(index, e.target.value)} />
+                                <Stack>
                                     {
-                                        query.parameters.map((parameter) => {
-                                            return <li className='list-group-item d-flex justify-content-between'>
-                                                <p>{parameter.name} : {parameter.type}</p>
-                                                <button
-                                                    className='btn btn-danger' onClick={e => removeQueryParameter(index, query.parameters.indexOf(parameter))}>Remove</button>
-                                            </li>
+                                        query.parameters.map((paramater, paramIndex) => {
+                                            return <Group justify='space-between'>
+                                                <Text>{paramater.name} : {paramater.type}</Text>
+                                                <Button variant='light' color='red' onClick={e => removeQueryParameter(index, paramIndex)}>
+                                                    <IconBackspace size={15} />
+                                                </Button>
+                                            </Group>
                                         })
                                     }
-                                </ul>
-                                <div className="input-group">
-                                    <input type="text" className="form-control" ref={fieldNameRef} />
-                                    <select type="text" className="form-control" ref={fieldTypeRef} >
-                                        <option value="">Select Type</option>
-                                        {FIELD_TYPES.map((type) => (
-                                            <option value={type}>{type}</option>
-                                        ))}
-                                    </select>
-                                    <select type="text" className="form-control" ref={fieldConstraintRef} >
-                                        <option value="">Select Constraint</option>
-                                        {FIELD_CONSTRAINTS.map((constraint) => (
-                                            <option value={constraint}>{constraint}</option>
-                                        ))}
-                                    </select>
-                                    
-                                    <button
-                                        className='btn btn-primary'
-                                        onClick={e => addQueryParameter(index, fieldNameRef.current.value, fieldTypeRef.current.value, fieldConstraintRef.current.value)}>Add Parameter</button>
-                                </div>
-                            </Accordion.Body>
+                                </Stack>
+                                <TextInput my={10} rightSection={
+                                    <CustomSelect data={
+                                        FIELD_TYPES.map((type) => ({ value: type, label: type }))
+                                    } ref={fieldTypeRef} />
+                                } ref={fieldNameRef}
+                                    leftSection={
+                                        <ActionIcon color='green'
+                                            onClick={e => addQueryParameter(index, fieldNameRef.current.value, fieldTypeRef.current.value)}>
+                                            <IconCirclePlus size={15} />
+                                        </ActionIcon>
+
+                                    } rightSectionWidth={92} />
+                                {/* <div className="row">
+                                    <div className="col-md-4">
+                                        {
+                                            mutationOptions.map((option) => (
+
+                                                <MDBRadio label={option} name={mutation.name} checked={mutation.type === option}
+                                                    onChange={
+                                                        e => {
+                                                            const newMutationList = [...mutationList];
+                                                            newMutationList[index].type = option;
+                                                            setMutationList(newMutationList);
+                                                        }
+                                                    }
+                                                />
+                                            ))
+                                        }
+
+                                    </div>
+                                    <div className="col-md-4"></div>
+                                </div> */}
+                            </Accordion.Panel>
                         </Accordion.Item>
                     })
                 }
             </Accordion>
+             
             <button className='btn btn-primary' onClick={addNewQuery}>Add Query</button>
 
         </div>

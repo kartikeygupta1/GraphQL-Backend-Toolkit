@@ -1,5 +1,6 @@
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
+import { Title } from '@mantine/core';
 import React, { useRef } from 'react'
 import { Accordion } from 'react-bootstrap'
 
@@ -20,7 +21,7 @@ const QueryHandler = () => {
 
     return (
         <div>
-
+            <Title order={2} mt={10}>Query Handler</Title>
             <Accordion defaultActiveKey="0">
                 {
                     queryList.map((query, index) => {

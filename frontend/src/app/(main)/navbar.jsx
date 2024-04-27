@@ -71,7 +71,7 @@ function Navbar() {
             <Link href="/" className={classes.link}>
               Home
             </Link>
-            <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
+            <HoverCard width={150} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <a href="./login" className={classes.link}>
                   <Center inline>
@@ -79,7 +79,7 @@ function Navbar() {
                     GraphQlClient
                     </Box>
                     <IconChevronDown
-                      style={{ width: rem(16), height: rem(16) }}
+                      style={{ width: rem(20), height: rem(16) }}
                       color={theme.colors.blue[6]}
                     />
                   </Center>
@@ -92,9 +92,9 @@ function Navbar() {
 
               </HoverCard.Dropdown>
             </HoverCard>
-            <Link href="../user/graphql-client" className={classes.link}>
+            {/* <Link href="../user/graphql-client" className={classes.link}>
               GraphQlClient
-            </Link>
+            </Link> */}
             <Link href="../user/manage-project" className={classes.link}>
               CodeGenerator
             </Link>

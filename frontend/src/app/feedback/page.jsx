@@ -25,6 +25,7 @@ function FeedbackPage() {
         justifyContent: 'right',
         alignItems: 'center',
         padding: '20px',
+        
       }}
     >
       <Container size="sm">

@@ -155,7 +155,7 @@ export const GraphProvider = ({ children }) => {
         setMutationList(newMutationList);
     }
 
-    const updateMutationParameter = (index, parameterIndex, parameter, type, constraint) => {
+    const addMutationParameter = (index, parameter, type, constraint="") => {
         const newMutationList = [...mutationList];
         newMutationList[index].parameters[parameterIndex] = {
             name: parameter,
@@ -258,10 +258,10 @@ export const GraphProvider = ({ children }) => {
             updateQueryReturnType,
             removeQueryParameter,
             updateMutationName,
-            updateMutationParameter,
+            addMutationParameter,
             updateMutationReturnType,
             removeMutationParameter,
-
+            removeMutation,
             projectList,
             setProjectList,
             projectName,

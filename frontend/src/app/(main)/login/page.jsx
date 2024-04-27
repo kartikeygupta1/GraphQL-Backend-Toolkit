@@ -59,7 +59,7 @@ function Login() {
   return (
       <div 
       style={{
-        backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+        backgroundImage: `url('https://images.pexels.com/photos/2387532/pexels-photo-2387532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',

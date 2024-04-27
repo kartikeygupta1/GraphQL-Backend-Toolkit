@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Container, Card, TextInput, Textarea, Rating, Button, Divider } from '@mantine/core';
- 
+
 
 function FeedbackPage() {
   const [name, setName] = useState('');
@@ -21,8 +21,8 @@ function FeedbackPage() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
+        display: 'grid',
+        justifyContent: 'right',
         alignItems: 'center',
         padding: '20px',
       }}

@@ -35,8 +35,12 @@ const Layout = ({ children }) => {
         <Group h="100%" px="md">
           <Burger opened={mobileOpened} onClick={toggleMobile} hiddenFrom="sm" size="sm" />
           <Burger opened={desktopOpened} onClick={toggleDesktop} visibleFrom="sm" size="sm" />
-          <Title  onClick={e => router.push('/')} order={3}>QueryQL</Title>
-          <Title onClick={e => router.push('../user/manage-project')} order={3}>CodeGenerator</Title>
+          <Title onClick={e => router.push('/')} order={3}>QueryQL</Title>
+          <Title onClick={e => router.push('../user/graphql-client')} order={3}>GraphQlClient</Title>
+          <Title onClick={e => router.push('../user/manage-project')} order={3}>ManageProject</Title>
+           
+           
+           
 
         </Group>
       </AppShell.Header>

@@ -47,10 +47,7 @@ const QueryHandler = () => {
                         return <Accordion.Item key={index} value={query.name + index}>
                             <Accordion.Control>
                                 <Title order={3}>{query.name}</Title>
-                                {/* <input type="text" className='form-control' value={mutation.name} onChange={
-                                    e => updateMutationName(index, e.target.value)
-                                } />
-                                <button className='btn btn-danger' onClick={e => removeMutation(index)}>Remove</button> */}
+                                 
                             </Accordion.Control>
                             <Accordion.Panel>
                                 <TextInput my={10} rightSection={

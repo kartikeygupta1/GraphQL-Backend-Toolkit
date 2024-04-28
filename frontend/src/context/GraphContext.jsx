@@ -127,13 +127,13 @@ export const GraphProvider = ({ children }) => {
         setQueryList(newQueryList);
     }
 
-    const updateQueryParameter = (index, parameterIndex, parameter, type, constraint) => {
+    const updateQueryParameter = (index, parameter, type, constraint) => {
         const newQueryList = [...queryList];
-        newQueryList[index].parameters[parameterIndex] = {
+        newQueryList[index].parameters.push({
             name: parameter,
             type,
             required: constraint
-        }
+        });
         setQueryList(newQueryList);
     }
 
@@ -177,9 +177,9 @@ export const GraphProvider = ({ children }) => {
         setMutationList(newMutationList);
     }
 
-    const addEntityField = (index, field) => {
+    const addEntityField = (index, field, type) => {
         const newEntityList = [...entityList];
-        newEntityList[index].fields.push(field);
+        newEntityList[index].fields.push({name : field, type});
         setEntityList(newEntityList);
     }
 

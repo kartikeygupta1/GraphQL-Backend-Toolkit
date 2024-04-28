@@ -1,13 +1,14 @@
 'use client';
-import React, { use, useRef, useState } from 'react';
+import React, { forwardRef, use, useRef, useState } from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
 import useGraphContext from '@/context/GraphContext';
 import { FIELD_TYPES } from '@/constants';
 import { Accordion, ActionIcon, Box, Button, Divider, Grid, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 
-const CustomSelect = ({ data, ref }) => {
-    return <NativeSelect
+const CustomSelect = forwardRef(({ data }, ref) => (
+
+    <NativeSelect
         ref={ref}
         data={data}
         rightSectionWidth={28}
@@ -21,7 +22,7 @@ const CustomSelect = ({ data, ref }) => {
             },
         }}
     />
-}
+))
 
 const EntityHandler = () => {
 

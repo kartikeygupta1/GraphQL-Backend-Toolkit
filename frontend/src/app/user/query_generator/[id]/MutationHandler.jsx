@@ -28,7 +28,7 @@ const CustomSelect = ({ data, ref }) => {
 const MutationHandler = () => {
 
     const { mutationList,
-        addMutation,
+        addNewMutation,
         updateMutationName,
         removeMutation,
         removeMutationParameter,
@@ -109,7 +109,7 @@ const MutationHandler = () => {
                     })
                 }
             </Accordion>
-            <Button mt={20} onClick={addMutation}
+            <Button mt={20} onClick={addNewMutation}
                 leftSection={
                     <ActionIcon>
                         <IconCirclePlus size={20} />

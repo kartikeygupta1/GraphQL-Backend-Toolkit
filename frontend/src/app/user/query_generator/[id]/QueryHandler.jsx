@@ -4,10 +4,10 @@ import useGraphContext from '@/context/GraphContext';
 
 import { Accordion, ActionIcon, Button, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
  
 
-const CustomSelect = ({ data, ref }) => {
+const CustomSelect = forwardRef(({ data }, ref) => {
     return <NativeSelect
         ref={ref}
         data={data}
@@ -21,7 +21,7 @@ const CustomSelect = ({ data, ref }) => {
             },
         }}
     />
-}
+})
 
 const QueryHandler = () => {
 
@@ -32,7 +32,7 @@ const QueryHandler = () => {
         removeQuery,
         addParameter,
         removeQueryParameter,
-        addQueryParameter,
+        updateQueryParameter,
     } = useGraphContext();
     const fieldNameRef = useRef();
     const fieldTypeRef = useRef();
@@ -47,10 +47,7 @@ const QueryHandler = () => {
                         return <Accordion.Item key={index} value={query.name + index}>
                             <Accordion.Control>
                                 <Title order={3}>{query.name}</Title>
-                                {/* <input type="text" className='form-control' value={mutation.name} onChange={
-                                    e => updateMutationName(index, e.target.value)
-                                } />
-                                <button className='btn btn-danger' onClick={e => removeMutation(index)}>Remove</button> */}
+                                 
                             </Accordion.Control>
                             <Accordion.Panel>
                                 <TextInput my={10} rightSection={
@@ -77,7 +74,7 @@ const QueryHandler = () => {
                                 } ref={fieldNameRef}
                                     leftSection={
                                         <ActionIcon color='green'
-                                            onClick={e => addQueryParameter(index, fieldNameRef.current.value, fieldTypeRef.current.value)}>
+                                            onClick={e => updateQueryParameter(index, fieldNameRef.current.value, fieldTypeRef.current.value)}>
                                             <IconCirclePlus size={15} />
                                         </ActionIcon>
 

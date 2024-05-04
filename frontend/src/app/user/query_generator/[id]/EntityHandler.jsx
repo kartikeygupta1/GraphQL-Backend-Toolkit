@@ -3,7 +3,7 @@ import React, { forwardRef, use, useRef, useState } from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
 import useGraphContext from '@/context/GraphContext';
 import { FIELD_TYPES } from '@/constants';
-import { Accordion, ActionIcon, Box, Button, Divider, Grid, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
+import { Accordion, ActionIcon, Box, Button, Divider, Flex, Grid, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 
 const CustomSelect = forwardRef(({ data }, ref) => (
@@ -28,6 +28,8 @@ const EntityHandler = () => {
 
     const fieldNameRef = useRef(null);
     const fieldTypeRef = useRef(null);
+
+    const entityNameRef = useRef(null);
 
     const {
         entityList,
@@ -75,11 +77,17 @@ const EntityHandler = () => {
                                         <Title order={3}>{entity.name}</Title>
                                     </Accordion.Control>
                                     <Accordion.Panel>
-                                        <TextInput my={10} rightSection={
-                                            <ActionIcon color='red' onClick={e => removeEntity(index)}>
-                                                <IconTrash size={15} />
-                                            </ActionIcon>
-                                        } label="Update Entity Name" value={entity.name} onChange={e => updateEntityName(index, e.target.value)} />
+                                        <Flex my={10} align={'flex-end'} w={'100%'}>
+
+                                            <TextInput ref={entityNameRef}
+
+                                                rightSection={
+                                                    <ActionIcon color='red' onClick={e => removeEntity(index)}>
+                                                        <IconTrash size={15} />
+                                                    </ActionIcon>
+                                                } label="Update Entity Name" defaultValue={entity.name} />
+                                            <Button onClick={e => updateEntityName(index, entityNameRef.current.value)} ml={10}>Rename</Button>
+                                        </Flex>
                                         <Stack>
                                             {
                                                 entity.fields.map((field) => {

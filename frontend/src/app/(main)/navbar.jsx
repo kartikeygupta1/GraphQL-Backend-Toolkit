@@ -71,7 +71,7 @@ function Navbar() {
             <Link href="/" className={classes.link}>
               Home
             </Link>
-            <HoverCard width={150} position="bottom" radius="md" shadow="md" withinPortal>
+            {/* <HoverCard width={190} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <a href="./login" className={classes.link}>
                   <Center inline>
@@ -91,12 +91,33 @@ function Navbar() {
                 <a href="./login"><Button variant="default">Log in</Button></a>
 
               </HoverCard.Dropdown>
-            </HoverCard>
-            {/* <Link href="../user/graphql-client" className={classes.link}>
+            </HoverCard> */}
+            {/* <HoverCard width={190} position="bottom" radius="md" shadow="md" withinPortal>
+              <HoverCard.Target>
+                <a href="./login" className={classes.link}>
+                  <Center inline>
+                    <Box component="span" mr={5}>
+                    CodeGenerator
+                    </Box>
+                    <IconChevronDown
+                      style={{ width: rem(20), height: rem(16) }}
+                      color={theme.colors.blue[6]}
+                    />
+                  </Center>
+                </a>
+              </HoverCard.Target>
+
+              <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
+                {links}
+                <a href="./login"><Button variant="default">Log in</Button></a>
+
+              </HoverCard.Dropdown>
+            </HoverCard> */}
+            <Link href="../user/graphql-client" className={classes.link}>
               GraphQlClient
-            </Link> */}
+            </Link>
             <Link href="../user/manage-project" className={classes.link}>
-              CodeGenerator
+              Code Generator
             </Link>
           </Group>
 

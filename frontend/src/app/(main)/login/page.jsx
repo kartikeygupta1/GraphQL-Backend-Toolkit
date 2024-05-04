@@ -35,10 +35,8 @@ function Login() {
       headers: {
         'Content-Type': 'application/json'
       }
-
     });
     console.log(res.status)
-
     if (res.status === 200) {
       toast.success("Login successfull")
 
@@ -52,8 +50,10 @@ function Login() {
           router.push('/user/manage-project');
         })
     }
-    else if (res.status === 400) {
-      toast.error("Invalid credentials")
+    else if (res.status === 401) {
+      toast.error("Invalid credentials");
+    } else {
+      toast.error("Something went wrong");
     }
   }
 
@@ -71,9 +71,6 @@ function Login() {
 
       }}
     >
-
-
-
       <Container size={420} my={40}>
         <Title ta="center" className={classes.title}>
           Welcome back!

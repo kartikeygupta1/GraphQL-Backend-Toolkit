@@ -17,8 +17,6 @@ router.post('/add', (req, res) => {
         });
 });
 
-// for reset password
-
 router.get('/getbymail/:email', (req, res) => {
     Model.findOne({ email: req.params.email })
         .then((result) => {
@@ -84,9 +82,7 @@ router.post('/authenticate', (req, res) => {
                         } else {
                             res.status(200).json({ token, role, avatar, name })
                         }
-
                     }
-
                 )
             } else {
                 res.status(401).json({ message: 'Invalid Credentials' })

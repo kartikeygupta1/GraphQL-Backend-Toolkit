@@ -3,12 +3,12 @@ import useGraphContext from '@/context/GraphContext';
 import { Accordion, ActionIcon, Button, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import { MDBCard, MDBCardBody, MDBRadio } from 'mdb-react-ui-kit';
-import React, { useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 
 const mutationOptions = ['add', 'update', 'delete'];
 const queryOptions = ['readAll', 'readByField', 'readById'];
 
-const CustomSelect = ({ data, ref }) => {
+const CustomSelect = forwardRef(({ data }, ref) => {
     return <NativeSelect
         ref={ref}
         data={data}
@@ -23,7 +23,9 @@ const CustomSelect = ({ data, ref }) => {
             },
         }}
     />
-}
+})
+
+ 
 
 const MutationHandler = () => {
 

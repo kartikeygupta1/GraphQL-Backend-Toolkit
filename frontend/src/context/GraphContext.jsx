@@ -63,19 +63,19 @@ export const GraphProvider = ({ children }) => {
 
     const fetchProjectsData = () => {
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/project/getbyuser`, {
-          headers:{
-            'x-auth-token': currentUser.token,
-          }
+            headers: {
+                'x-auth-token': currentUser.token,
+            }
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            setProjectList(data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setProjectList(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
     const loadProject = (project) => {
         // console.log(project);
@@ -155,14 +155,15 @@ export const GraphProvider = ({ children }) => {
         setMutationList(newMutationList);
     }
 
-    const addMutationParameter = (index, parameter, type, constraint="") => {
+    const addMutationParameter = (index, parameter, type, constraint = "") => {
         const newMutationList = [...mutationList];
-        newMutationList[index].parameters[parameterIndex] = {
+        newMutationList[index].parameters.push({
             name: parameter,
             type,
             required: constraint
-        }
+        });
         setMutationList(newMutationList);
+
     }
 
     const updateMutationReturnType = (index, returnType) => {
@@ -179,7 +180,7 @@ export const GraphProvider = ({ children }) => {
 
     const addEntityField = (index, field, type) => {
         const newEntityList = [...entityList];
-        newEntityList[index].fields.push({name : field, type});
+        newEntityList[index].fields.push({ name: field, type });
         setEntityList(newEntityList);
     }
 
@@ -232,7 +233,7 @@ export const GraphProvider = ({ children }) => {
         });
     }
 
-    
+
 
     return (
         <GraphContext.Provider value={{
@@ -250,13 +251,13 @@ export const GraphProvider = ({ children }) => {
             removeEntityField,
             updateProjectData,
             isProjectLoading,
-            
             addNewMutation,
             addNewEntity,
             updateQueryName,
             updateQueryParameter,
             updateQueryReturnType,
             removeQueryParameter,
+            removeQuery,
             updateMutationName,
             addMutationParameter,
             updateMutationReturnType,

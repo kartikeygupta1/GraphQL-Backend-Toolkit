@@ -12,7 +12,7 @@ import useAppContext from '@/context/AppContext';
 function Login() {
 
   const router = useRouter();
-  const {setCurrentUser, setLoggedIn} = useAppContext();
+  const { setCurrentUser, setLoggedIn } = useAppContext();
 
   const loginForm = useForm({
     initialValues: {
@@ -29,35 +29,36 @@ function Login() {
   const loginSubmit = async (values) => {
     console.log(values);
 
-      const res = await fetch('http://localhost:5000/user/authenticate', {
-        method: 'POST',
-        body: JSON.stringify(values),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    const res = await fetch('http://localhost:5000/user/authenticate', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log(res.status)
+    if (res.status === 200) {
+      toast.success("Login successfull")
 
-      });
-      console.log(res.status)
-      
-      if (res.status === 200) {
-        toast.success("Login successfull")
-        
-        res.json()
+      res.json()
         .then((data) => {
           console.log(data);
           setLoggedIn(true);
           setCurrentUser(data);
           sessionStorage.setItem('user', JSON.stringify(data));
+          document.cookie = `token=${data.token}`;
           router.push('/user/manage-project');
         })
-      }
-      else if (res.status === 400) {
-        toast.error("Invalid credentials")
-      }
+    }
+    else if (res.status === 401) {
+      toast.error("Invalid credentials");
+    } else {
+      toast.error("Something went wrong");
+    }
   }
 
   return (
-      <div 
+    <div
       style={{
         backgroundImage: `url('https://images.pexels.com/photos/2387532/pexels-photo-2387532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
         backgroundSize: 'cover',
@@ -67,40 +68,37 @@ function Login() {
         justifyContent: 'center',
         alignItems: 'center',
         padding: '20px',
-        
+
       }}
-      >
+    >
+      <Container size={420} my={40}>
+        <Title ta="center" className={classes.title}>
+          Welcome back!
+        </Title>
+        <Text c="dimmed" size="sm" ta="center" mt={5}>
+          Do not have an account yet?{' '}
+          <Anchor size="sm" component="button">
+            <a href="../signup">Register</a>
+          </Anchor>
+        </Text>
 
-
-
-    <Container size={420} my={40}>
-      <Title ta="center" className={classes.title}>
-        Welcome back!
-      </Title>
-      <Text c="dimmed" size="sm" ta="center" mt={5}>
-        Do not have an account yet?{' '}
-        <Anchor size="sm" component="button">
-        <a href="../signup">Register</a>
-        </Anchor>
-      </Text>
-
-      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <form onSubmit={loginForm.onSubmit(loginSubmit)}>
-          <TextInput label="Email" placeholder="Enter email over here" {...loginForm.getInputProps('email')} required />
-          <PasswordInput label="Password" placeholder="Password over here" {...loginForm.getInputProps('password')} required mt="md" />
-          <Group justify="space-between" mt="lg">
-            <Checkbox label="Remember me" />
-            <Anchor component="button" size="sm">
-            <a href="../resetPassword">ForgotPassword</a>
-            </Anchor>
-          </Group>
-          <Button type='submit' fullWidth mt="xl">
-            Sign in
-          </Button>
-        </form>
-      </Paper>
-    </Container>
-      </div>
+        <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+          <form onSubmit={loginForm.onSubmit(loginSubmit)}>
+            <TextInput label="Email" placeholder="Enter email over here" {...loginForm.getInputProps('email')} required />
+            <PasswordInput label="Password" placeholder="Password over here" {...loginForm.getInputProps('password')} required mt="md" />
+            <Group justify="space-between" mt="lg">
+              <Checkbox label="Remember me" />
+              <Anchor component="button" size="sm">
+                <a href="../resetPassword">ForgotPassword</a>
+              </Anchor>
+            </Group>
+            <Button type='submit' fullWidth mt="xl">
+              Sign in
+            </Button>
+          </form>
+        </Paper>
+      </Container>
+    </div>
   );
 }
 

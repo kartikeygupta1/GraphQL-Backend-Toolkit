@@ -3,6 +3,7 @@ const router = express.Router();
 const Model = require('../Models/userModel');
 
 const jwt = require('jsonwebtoken');
+const verifyToken = require('./verifyToken');
 require('dotenv').config();
 
 router.post('/add', (req, res) => {
@@ -15,8 +16,6 @@ router.post('/add', (req, res) => {
             res.status(500).json(err);
         });
 });
-
-// for reset password
 
 router.get('/getbymail/:email', (req, res) => {
     Model.findOne({ email: req.params.email })
@@ -83,9 +82,7 @@ router.post('/authenticate', (req, res) => {
                         } else {
                             res.status(200).json({ token, role, avatar, name })
                         }
-
                     }
-
                 )
             } else {
                 res.status(401).json({ message: 'Invalid Credentials' })
@@ -95,5 +92,9 @@ router.post('/authenticate', (req, res) => {
             res.status(500).json(err)
         })
 })
+
+router.get("/authorise", verifyToken, (req, res) => {
+    res.status(200).json({ allowed: true });
+});
 
 module.exports = router;

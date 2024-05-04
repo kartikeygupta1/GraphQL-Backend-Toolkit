@@ -37,6 +37,7 @@ const QueryHandler = () => {
     const fieldNameRef = useRef();
     const fieldTypeRef = useRef();
     const fieldConstraintRef = useRef();
+    const queryNameRef = useRef(null);
 
     return (
         <div>
@@ -50,11 +51,16 @@ const QueryHandler = () => {
                                  
                             </Accordion.Control>
                             <Accordion.Panel>
-                                <TextInput my={10} rightSection={
+                            <Flex my={10} align={'flex-end'} w={'100%'}>
+
+                                <TextInput ref={queryNameRef} 
+                                rightSection={
                                     <ActionIcon color='red' onClick={e => removeQuery(index)}>
                                         <IconTrash size={15} />
                                     </ActionIcon>
                                 } label="Update Query name" value={query.name} onChange={e => updateQueryName(index, e.target.value)} />
+                                <Button onClick={e => updateEntityName(index, queryNameRef.current.value)} ml={10}>Rename</Button>
+                            </Flex>
                                 <Stack>
                                     {
                                         query.parameters.map((paramater, paramIndex) => {

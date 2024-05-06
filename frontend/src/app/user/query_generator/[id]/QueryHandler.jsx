@@ -2,7 +2,7 @@
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
 
-import { Accordion, ActionIcon, Button, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Accordion, ActionIcon, Button, Flex, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import React, { forwardRef, useRef } from 'react'
  

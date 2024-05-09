@@ -1,6 +1,6 @@
 import { FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
-import { Accordion, ActionIcon, Button, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
+import { Accordion, ActionIcon, Button, Flex, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import { MDBCard, MDBCardBody, MDBRadio } from 'mdb-react-ui-kit';
 import React, { forwardRef, useRef } from 'react'
@@ -39,6 +39,7 @@ const MutationHandler = () => {
 
     const fieldNameRef = useRef(null);
     const fieldTypeRef = useRef(null);
+    const mutationNameRef = useRef(null);
 
 
     return (
@@ -57,11 +58,16 @@ const MutationHandler = () => {
                                 <button className='btn btn-danger' onClick={e => removeMutation(index)}>Remove</button> */}
                             </Accordion.Control>
                             <Accordion.Panel>
-                                <TextInput my={10} rightSection={
+                                <Flex my={10} align={'flex-end'} w={'100%'}>
+
+                                <TextInput ref={mutationNameRef}
+                                 rightSection={
                                     <ActionIcon color='red' onClick={e => removeMutation(index)}>
                                         <IconTrash size={15} />
                                     </ActionIcon>
                                 } label="Update Mutation Name" value={mutation.name} onChange={e => updateMutationName(index, e.target.value)} />
+                                <Button onClick={e => updateEntityName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
+                                </Flex>
                                 <Stack>
                                     {
                                         mutation.parameters.map((paramater, paramIndex) => {

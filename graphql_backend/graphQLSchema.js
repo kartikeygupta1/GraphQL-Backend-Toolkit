@@ -44,7 +44,7 @@ exports.resolvers = {
       })
       return result;
 
-    },n
+    },
     getProduct: async (parent, args) => {
       await connect();
       const result = ProductModel.findById(args.id).then((res) => {

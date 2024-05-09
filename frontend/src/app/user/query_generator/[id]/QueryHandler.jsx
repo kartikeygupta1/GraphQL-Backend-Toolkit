@@ -1,8 +1,8 @@
 
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
-
-import { Accordion, ActionIcon, Button, Flex, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
+import { CopyBlock, dracula } from 'react-code-blocks';
+import { Accordion, ActionIcon, Button, Divider, Flex, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import React, { forwardRef, useRef } from 'react'
  
@@ -41,6 +41,8 @@ const QueryHandler = () => {
 
     return (
         <div>
+            <Divider mt={30}/>
+            
             <Title order={2} mt={30}>Query Handler</Title>
             <Accordion defaultActiveKey="0">
                 {
@@ -58,8 +60,8 @@ const QueryHandler = () => {
                                     <ActionIcon color='red' onClick={e => removeQuery(index)}>
                                         <IconTrash size={15} />
                                     </ActionIcon>
-                                } label="Update Query name" value={query.name} onChange={e => updateQueryName(index, e.target.value)} />
-                                <Button onClick={e => updateEntityName(index, queryNameRef.current.value)} ml={10}>Rename</Button>
+                                } label="Update Query name" />
+                                <Button onClick={e => updateQueryName(index, queryNameRef.current.value)} ml={10}>Rename</Button>
                             </Flex>
                                 <Stack>
                                     {
@@ -119,8 +121,10 @@ const QueryHandler = () => {
                     </ActionIcon>
                 }
             >Add Query</Button>
+            
 
         </div>
+        
     )
 }
 

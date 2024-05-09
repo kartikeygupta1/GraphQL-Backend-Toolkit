@@ -198,14 +198,14 @@ const GraphQLClient = () => {
 
         <Grid>
           <Grid.Col span={{ base: 12, xs: 6 }}>
-            <label htmlFor="variables">Variables</label>
+            <label htmlFor="variables">Operation</label>
             <Editor theme='vs-dark' id="query" height="40vh" defaultLanguage="javascript" value={query} onChange={setQuery} />
 
 
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, xs: 6 }}>
-            <label htmlFor="query">Operation</label>
+            <label htmlFor="query">Variable</label>
             <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="json" value={variables} onChange={setVariables} />
 
           </Grid.Col>

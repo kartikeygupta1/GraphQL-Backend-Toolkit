@@ -58,8 +58,8 @@ const QueryHandler = () => {
                                     <ActionIcon color='red' onClick={e => removeQuery(index)}>
                                         <IconTrash size={15} />
                                     </ActionIcon>
-                                } label="Update Query name" value={query.name} onChange={e => updateQueryName(index, e.target.value)} />
-                                <Button onClick={e => updateEntityName(index, queryNameRef.current.value)} ml={10}>Rename</Button>
+                                } label="Update Query name"/>
+                                <Button onClick={e => updateQueryName(index, queryNameRef.current.value)} ml={1} p = {0}>Rename</Button>
                             </Flex>
                                 <Stack>
                                     {

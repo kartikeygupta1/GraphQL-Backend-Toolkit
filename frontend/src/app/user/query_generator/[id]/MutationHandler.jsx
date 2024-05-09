@@ -65,8 +65,8 @@ const MutationHandler = () => {
                                     <ActionIcon color='red' onClick={e => removeMutation(index)}>
                                         <IconTrash size={15} />
                                     </ActionIcon>
-                                } label="Update Mutation Name" value={mutation.name} onChange={e => updateMutationName(index, e.target.value)} />
-                                <Button onClick={e => updateEntityName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
+                                } label="Update Mutation Name" />
+                                <Button onClick={e => updateMutationName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
                                 </Flex>
                                 <Stack>
                                     {

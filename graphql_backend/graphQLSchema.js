@@ -4,8 +4,7 @@ const ProductModel = require("./models/productSchema");
 const { default: mongoose } = require('mongoose');
 
 exports.typeDefs = gql
-`type Product {
-    id: ID
+  `type Product {
     category: String!
     productName: String!
     price: Int!
@@ -16,8 +15,8 @@ type Query {
     getProduct(id: ID!): Product
 }
 type Mutation {
-    updateProduct(id: ID! ,category: String!, productName: String!, price: Int!, colors: [String!], imgPath: String!): Product
-    addProduct(category: String, productName: String!, price: Int, colors: [String!], imgPath: String): Product
+    updateProduct(id: ID ,category: String, productName: String, price: Int, colors: [String], imgPath: String): Product
+    addProduct(category: String, productName: String, price: Int, colors: [String!], imgPath: String): Product
     deleteProduct(id: ID!): Boolean!
 } `
 
@@ -39,6 +38,7 @@ exports.resolvers = {
       await connect();
       const result = ProductModel.find({}).then((res) => {
         if (res) {
+          console.log(res);
           return res;
         }
       })
@@ -84,6 +84,7 @@ exports.resolvers = {
         colors: args.colors
       });
       const result = product.save().then((res) => {
+        console.log(res);
         return res;
       })
       return result;

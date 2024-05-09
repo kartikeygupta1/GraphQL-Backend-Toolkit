@@ -6,7 +6,7 @@ import { getDisplayName } from 'next/dist/shared/lib/utils';
 import { Center, Box } from '@mantine/core';
 
 const DEFAULT_VARIABLE = `{
-    "productname": "smartphone",
+    "name": "smartphone",
     "category": "phone",
     "price": 1000,
     "quantity": 1,
@@ -30,17 +30,21 @@ const FETCH_ALL_QUERY = () => `query GetProduct {
     }
 `
 
-const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $age: Int) {
-    updateEntity(name: $name, age: $age) {
+const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $category: Int, $price: Int, $colors: [String]!) {
+    updateEntity(name: $name, category: $category, price: $price, colors: $colors) {
         name
-        age
+        category
+        price
+        colors
     }
 }`
 
-const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String) {
-    addProduct(productName: $name, category: $category) {
+const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String, $price: Int, $colors: [String]!) {
+    addProduct(productName: $name, category: $category, price: $price, colors: $colors) {
       productName
-        category
+      category
+      price
+      colors
     }
 }`
 
@@ -89,7 +93,7 @@ const GraphQLClient = () => {
 
   const makeQuery = async () => {
     // const query = document.getElementById('query').value;
-    // console.log(query);
+    // console.log(JSON.stringify(variables));
     const response = await fetch('http://localhost:9000', {
       method: 'POST',
       headers: {
@@ -202,7 +206,7 @@ const GraphQLClient = () => {
 
           <Grid.Col span={{ base: 12, xs: 6 }}>
             <label htmlFor="query">Operation</label>
-            <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="javascript" value={variables} onChange={setVariables} />
+            <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="json" value={variables} onChange={setVariables} />
 
           </Grid.Col>
 
@@ -216,7 +220,7 @@ const GraphQLClient = () => {
           </div>
           <label htmlFor="response">Response</label>
           {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}
-          <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="javascript" value={response} onChange={setResponse} />
+          <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="json" value={response} onChange={setResponse} />
         </div>
       </div>
 

@@ -2,7 +2,7 @@
 import { FIELD_CONSTRAINTS, FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
 
-import { Accordion, ActionIcon, Button, Divider, Flex, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
+import { Accordion, ActionIcon, Button, Flex, Group, NativeSelect, Stack, Text, TextInput, Title } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import React, { forwardRef, useRef } from 'react'
  
@@ -40,10 +40,7 @@ const QueryHandler = () => {
     const queryNameRef = useRef(null);
 
     return (
-        <>
-        <Divider mt={30} mb={90} />
         <div>
-            
             <Title order={2} mt={30}>Query Handler</Title>
             <Accordion defaultActiveKey="0">
                 {
@@ -124,7 +121,6 @@ const QueryHandler = () => {
             >Add Query</Button>
 
         </div>
-        </>
     )
 }
 

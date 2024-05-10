@@ -1,6 +1,6 @@
 import { FIELD_TYPES } from '@/constants';
 import useGraphContext from '@/context/GraphContext';
-import { Accordion, ActionIcon, Button, Flex, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
+import { Accordion, ActionIcon, Button, Divider, Flex, Group, NativeSelect, Stack, Text, TextInput, Title, rem } from '@mantine/core';
 import { IconBackspace, IconCirclePlus, IconTrash } from '@tabler/icons-react';
 import { MDBCard, MDBCardBody, MDBRadio } from 'mdb-react-ui-kit';
 import React, { forwardRef, useRef } from 'react'
@@ -44,6 +44,7 @@ const MutationHandler = () => {
 
     return (
         <div>
+             <Divider mt={30} mb={60} />
             <Title order={2} mt={30}>Mutation Handler</Title>
 
             <Accordion defaultActiveKey="0">

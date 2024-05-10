@@ -65,7 +65,10 @@ const EntityHandler = () => {
 
     return (
         <>
+         
             <Divider mt={30} />
+             
+            
             <Grid p={4} mt={30}>
                 <Grid.Col span={{ base: 12, md: 3 }}>
                     <Title order={2} mt={10}>Entity Handler</Title>
@@ -126,7 +129,7 @@ const EntityHandler = () => {
 
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 9 }}>
-                    <Title >GraphQLSchema.js Code</Title>
+                    <Title >Models</Title>
                     <CopyBlock
                         theme={dracula}
                         text={generateMongoDBSchema()}

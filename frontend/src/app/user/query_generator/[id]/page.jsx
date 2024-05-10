@@ -14,7 +14,7 @@ import QueryHandler from './QueryHandler';
 import MutationHandler from './MutationHandler';
 import { crudOperations } from '../CrudGenerator';
 import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
-import { Box, Button, Divider, Grid, Group, Stack } from '@mantine/core';
+import { Box, Button, Divider, Grid, Group, Stack, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import Link from 'next/link';
 // import videoBg from '../assets/Untitled_design.mp4';
@@ -37,6 +37,7 @@ const QueryGenerator = () => {
     updateEntityField,
     removeEntityField,
     updateProjectData,
+    deleteProject,
     isProjectLoading,
 
     addNewMutation,
@@ -289,7 +290,7 @@ const QueryGenerator = () => {
           <Group gap={10} mb={10}>
             <Button component={Link} href='/user/manage-project' onClick={updateProjectData} leftSection={<IconArrowLeft />}>Back</Button>
             <Button onClick={updateProjectData}>Update Changes</Button>
-            <Button onClick={updateProjectData}>Delete Project</Button>
+            <Button onClick={deleteProject}>Delete Project</Button>
           </Group>
           <Divider/>
 
@@ -304,8 +305,11 @@ const QueryGenerator = () => {
                 <MutationHandler />
               </Grid.Col>
               <Grid.Col span={{ base: 12, md: 9 }}>
+              <Divider mt={30} mb={30}/>
+              <Title >GraphQLSchema.js Code</Title>
                 <CodeBlock
                   text={generateGraphQLSchema()}
+
                   language='javascript'
                   showLineNumbers={true}
                   wrapLines={true}

@@ -202,6 +202,39 @@ export const GraphProvider = ({ children }) => {
         setEntityList(newEntityList);
     }
 
+    const deleteProject = () => {
+        fetch(`http://localhost:5000/project/delete/${projectId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => {
+            console.log(res.status);
+
+            if (res.status === 200) {
+
+                toast.success('Project deleted successfully');
+                res.json().then(data => {
+
+                    console.log(data);
+                    setQueryList(null);
+
+
+                    setMutationList(null);
+                    setEntityList(null);
+                    setMongoDbUrl('');
+                    setProjectId('');
+                    setProjectName('');
+                })
+            } else {            toast.error('Project delete failed');   
+            }
+        }
+        ).catch((err) => {
+            console.log(err);
+        });
+    }
+        
+
     const updateProjectData = () => {
         fetch(`http://localhost:5000/project/update/${projectId}`, {
             method: 'PUT',
@@ -250,6 +283,7 @@ export const GraphProvider = ({ children }) => {
             updateEntityField,
             removeEntityField,
             updateProjectData,
+            deleteProject,
             isProjectLoading,
             addNewMutation,
             addNewEntity,

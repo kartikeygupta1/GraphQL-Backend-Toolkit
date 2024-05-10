@@ -199,15 +199,17 @@ const GraphQLClient = () => {
         <Grid>
           <Grid.Col span={{ base: 12, xs: 6 }}>
             <label htmlFor="variables">Operation</label>
-            <Editor theme='vs-dark' id="query" height="40vh" defaultLanguage="javascript" value={query} onChange={setQuery} />
-
+            <div style={{ fontSize: '160px' }}  >
+              <Editor theme='vs-dark' id="query" height="40vh" defaultLanguage="javascript" value={query} onChange={setQuery} />
+            </div>
 
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, xs: 6 }}>
             <label htmlFor="query">Variable</label>
-            <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="json" value={variables} onChange={setVariables} />
-
+            <div style={{ fontSize: '16px' }}  >
+              <Editor theme='vs-dark' id="variables" height="40vh" defaultLanguage="json" value={variables} onChange={setVariables} />
+            </div>
           </Grid.Col>
 
         </Grid>
@@ -220,7 +222,11 @@ const GraphQLClient = () => {
           </div>
           <label htmlFor="response">Response</label>
           {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}
-          <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="json" value={response} onChange={setResponse} />
+          <div style={{ fontSize: '16px' }} >
+            <Editor theme='vs-dark' id="response" height="73vh" defaultLanguage="json" value={response} onChange={setResponse}
+
+            />
+          </div>
         </div>
       </div>
 

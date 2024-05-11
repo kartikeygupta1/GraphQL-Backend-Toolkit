@@ -89,21 +89,21 @@ const QueryGenerator = () => {
   }
 
   const generateQueryCode = () => {
-    return queryList.map((query) => {
+    return `type Query{
+      ${queryList.map((query) => {
       return `
-      type Query{
-          ${query.name}(${query.parameters.map((parameter) => {
+      ${query.name}${query.parameters.length ? `(${query.parameters.map((parameter) => {
         return `${parameter.name}: ${parameter.type}${parameter.required ? '!' : ''}`
-      })}): ${query.returnType}
-      }`
-    })
+      }).join(', ')})` : ''}: ${query.returnType}`
+      }).join('')}
+    }`
   }
 
   const generateGraphQLSchema = () => {
     return `
     const { gql } = require('apollo-server-express');
     ${entityList.map((entity) => (
-      `const ${titleCase(entity.name)}Model = require("./models/${entity.name}Schema");`
+      `const ${titleCase(entity.name)}Model = require("./models/${entity.name.toLowerCase()}Schema");`
     ))
       }
     const mongoose = require('mongoose');
@@ -112,7 +112,7 @@ const QueryGenerator = () => {
     ${generateEntityCode()}
     ${generateQueryCode()}
     ${generateMutationCode()}
-    
+    \`
     const db_url = "${mongoDbUrl}";
     const connect = async () => {
         await mongoose.connect(db_url, { useNewUrlParser: true });
@@ -149,8 +149,7 @@ const QueryGenerator = () => {
                            return result;
                         }`))}      
                 }`))}   
-        }
-}`
+        }`
   }
 
   useEffect(() => {
@@ -290,9 +289,9 @@ const QueryGenerator = () => {
           <Group gap={10} mb={10}>
             <Button component={Link} href='/user/manage-project' onClick={updateProjectData} leftSection={<IconArrowLeft />}>Back</Button>
             <Button onClick={updateProjectData}>Update Changes</Button>
-            <Button onClick={deleteProject}>Delete Project</Button>
+            <Button onClick={deleteProject} color='red' variant='light' >Delete Project</Button>
           </Group>
-          <Divider/>
+          <Divider />
 
           <AppHandler />
 
@@ -305,8 +304,8 @@ const QueryGenerator = () => {
                 <MutationHandler />
               </Grid.Col>
               <Grid.Col span={{ base: 12, md: 9 }}>
-              <Divider mt={30} mb={30}/>
-              <Title >GraphQLSchema.js Code</Title>
+                <Divider mt={30} mb={30} />
+                <Title >GraphQLSchema.js Code</Title>
                 <CodeBlock
                   text={generateGraphQLSchema()}
 

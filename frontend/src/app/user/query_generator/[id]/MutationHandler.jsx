@@ -25,7 +25,7 @@ const CustomSelect = forwardRef(({ data }, ref) => {
     />
 })
 
- 
+
 
 const MutationHandler = () => {
 
@@ -44,7 +44,7 @@ const MutationHandler = () => {
 
     return (
         <div>
-             <Divider mt={30} mb={60} />
+            <Divider mt={30} mb={60} />
             <Title order={2} mt={30}>Mutation Handler</Title>
 
             <Accordion defaultActiveKey="0">
@@ -61,13 +61,14 @@ const MutationHandler = () => {
                             <Accordion.Panel>
                                 <Flex my={10} align={'flex-end'} w={'100%'}>
 
-                                <TextInput ref={mutationNameRef}
-                                 rightSection={
-                                    <ActionIcon color='red' onClick={e => removeMutation(index)}>
-                                        <IconTrash size={15} />
-                                    </ActionIcon>
-                                } label="Update Mutation Name" />
-                                <Button onClick={e => updateMutationName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
+                                    <TextInput ref={mutationNameRef}
+                                        defaultValue={mutation.name}
+                                        rightSection={
+                                            <ActionIcon color='red' onClick={e => removeMutation(index)}>
+                                                <IconTrash size={15} />
+                                            </ActionIcon>
+                                        } label="Update Mutation Name" />
+                                    <Button onClick={e => updateMutationName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
                                 </Flex>
                                 <Stack>
                                     {

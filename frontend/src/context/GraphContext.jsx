@@ -218,22 +218,22 @@ export const GraphProvider = ({ children }) => {
 
                     console.log(data);
                     setQueryList(null);
-
-
                     setMutationList(null);
                     setEntityList(null);
                     setMongoDbUrl('');
                     setProjectId('');
                     setProjectName('');
+                    fetchProjectsData();
                 })
-            } else {            toast.error('Project delete failed');   
+            } else {
+                toast.error('Project delete failed');
             }
         }
         ).catch((err) => {
             console.log(err);
         });
     }
-        
+
 
     const updateProjectData = () => {
         fetch(`http://localhost:5000/project/update/${projectId}`, {
@@ -282,6 +282,7 @@ export const GraphProvider = ({ children }) => {
             updateEntityName,
             updateEntityField,
             removeEntityField,
+            removeEntity,
             updateProjectData,
             deleteProject,
             isProjectLoading,

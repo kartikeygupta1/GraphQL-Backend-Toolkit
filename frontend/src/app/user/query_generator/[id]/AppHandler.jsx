@@ -2,7 +2,7 @@
 import React from 'react'
 import useGraphContext from '@/context/GraphContext';
 import { CopyBlock, dracula } from 'react-code-blocks';
-import { Box, Grid, Text, TextInput } from '@mantine/core';
+import { Box, Grid, Text, TextInput, Title } from '@mantine/core';
 
 const AppHandler = () => {
 

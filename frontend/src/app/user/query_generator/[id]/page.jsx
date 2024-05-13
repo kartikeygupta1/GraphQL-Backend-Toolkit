@@ -95,7 +95,7 @@ const QueryGenerator = () => {
       ${query.name}${query.parameters.length ? `(${query.parameters.map((parameter) => {
         return `${parameter.name}: ${parameter.type}${parameter.required ? '!' : ''}`
       }).join(', ')})` : ''}: ${query.returnType}`
-      }).join('')}
+    }).join('')}
     }`
   }
 
@@ -120,25 +120,15 @@ const QueryGenerator = () => {
     
     exports.resolvers = {
         Query: {
-            getProductsList: async (parent, args) => {
-                await connect();
-                const result = ProductModel.find({}).then((res) => {
-                    if (res) {
-                        return res;
-                    }
-                })
-                return result;
-            },
-            getProduct: async (parent, args) => {
-                await connect();
-                const result = ProductModel.findById(args.id).then((res) => {
-                    if (res) {
-                        return res;
-                    }
-                })
-                return result;
-            }
-        },
+          ${queryList.map((query) => (
+        `${query.name}: async (parent, args) => {
+            await connect();
+            const result = ${crudOperations[query.type](query.name)}
+            return result;
+          }`
+      ))}
+      ))
+    }},
 
         ${entityList.map((entity) => (
         `Mutation: {

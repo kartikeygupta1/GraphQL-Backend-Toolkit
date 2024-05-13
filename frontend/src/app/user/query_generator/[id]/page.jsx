@@ -17,7 +17,7 @@ import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
 import { Box, Button, Divider, Grid, Group, Stack, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import Link from 'next/link';
- 
+
 // import videoBg from '../assets/Untitled_design.mp4';
 
 const QueryGenerator = () => {
@@ -128,8 +128,7 @@ const QueryGenerator = () => {
             return result;
           }`
       ))}
-      ))
-    }},
+    },
 
         ${entityList.map((entity) => (
         `Mutation: {
@@ -282,29 +281,29 @@ const QueryGenerator = () => {
             <Button onClick={updateProjectData}>Update Changes</Button>
             <Button onClick={deleteProject} color='red' variant='light' >Delete Project</Button>
           </Group>
-          <Divider  />
+          <Divider />
 
           <AppHandler />
 
           <EntityHandler />
 
           <Box p={4}>
-          <Divider mt={30} mb={60} />
+            <Divider mt={30} mb={60} />
             <Grid>
-              <Grid.Col span={{ base: 12, md: 3 }}>              
+              <Grid.Col span={{ base: 12, md: 3 }}>
                 <QueryHandler />
                 <MutationHandler />
               </Grid.Col>
               <Grid.Col span={{ base: 12, md: 9 }}>
-                
+
                 <Title >GraphQLSchema.js Code</Title>
                 <CopyBlock
-                        theme={dracula}
-                        text={generateGraphQLSchema()}
-                        language={'JavaScript'}
-                        showLineNumbers={true}
-                        wrapLines
-                    />
+                  theme={dracula}
+                  text={generateGraphQLSchema()}
+                  language={'JavaScript'}
+                  showLineNumbers={true}
+                  wrapLines
+                />
               </Grid.Col>
             </Grid>
           </Box>

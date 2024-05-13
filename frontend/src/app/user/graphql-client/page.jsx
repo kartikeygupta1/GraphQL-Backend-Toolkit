@@ -30,8 +30,8 @@ const FETCH_ALL_QUERY = () => `query GetProduct {
     }
 `
 
-const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $category: Int, $price: Int, $colors: [String]!) {
-    updateEntity(name: $name, category: $category, price: $price, colors: $colors) {
+const UPDATE_MUTATION = () => `mutation updateProduct($id : ID!, $name: String, $category: Int, $price: Int, $colors: [String]!) {
+  updateProduct(_id: $id, name: $name, category: $category, price: $price, colors: $colors) {
         name
         category
         price
@@ -39,7 +39,7 @@ const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $category: I
     }
 }`
 
-const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String, $price: Int, $colors: [String]!) {
+const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String, $price: Int, $colors: [String!]) {
     addProduct(productName: $name, category: $category, price: $price, colors: $colors) {
       productName
       category
@@ -48,11 +48,14 @@ const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String
     }
 }`
 
-const DELETE_MUTATION = () => `mutation deleteEntity($name: String, $age: Int) {
-    deleteEntity(name: $name, age: $age) {
-        name
-        age
-    }
+const DELETE_MUTATION = () => `query GetProduct($id: ID!) {
+  getProduct(_id: $id) {
+    _id
+    category
+    productName
+    price
+    colors
+  }
 }`
 
 
@@ -105,6 +108,7 @@ const GraphQLClient = () => {
       })
     });
     const res = await response.json();
+    console.log(res.status);
     setResponse(JSON.stringify(res, null, 2));
   }
 
@@ -218,7 +222,7 @@ const GraphQLClient = () => {
       <div className="col-md-6">
         <div className="form-group text-white">
           <div className="text-center">
-            <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Query</Button>
+            <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Request</Button>
           </div>
           <label htmlFor="response">Response</label>
           {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}

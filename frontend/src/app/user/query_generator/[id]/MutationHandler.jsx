@@ -34,12 +34,15 @@ const MutationHandler = () => {
         updateMutationName,
         removeMutation,
         removeMutationParameter,
-        addMutationParameter
+        addMutationParameter,
+        updateMutationReturnType
+        
     } = useGraphContext();
 
     const fieldNameRef = useRef(null);
     const fieldTypeRef = useRef(null);
     const mutationNameRef = useRef(null);
+    const mutationReturnRef = useRef(null);
 
 
     return (
@@ -71,6 +74,13 @@ const MutationHandler = () => {
                                         } label="Update Mutation Name" />
                                     <Button onClick={e => updateMutationName(index, mutationNameRef.current.value)} ml={10}>Rename</Button>
                                 </Flex>
+                                <Flex my={10} align={'flex-end'} w={'100%'}>
+
+                                        <TextInput ref={mutationReturnRef}
+                                            defaultValue={mutation.returnType}
+                                            label="Mutation return Type" />
+                                        <Button onClick={e => updateMutationReturnType(index, mutationReturnRef.current.value)} ml={1} p={0}>Update</Button>
+                                    </Flex>
                                 <Stack>
                                     {
                                         mutation.parameters.map((paramater, paramIndex) => {

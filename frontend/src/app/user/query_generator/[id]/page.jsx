@@ -9,7 +9,7 @@ import { Accordion } from 'react-bootstrap';
 import useGraphContext from '@/context/GraphContext';
 
 import AppHandler from './AppHandler';
-import { CodeBlock, dracula } from 'react-code-blocks/dist';
+import { CodeBlock, CopyBlock, dracula } from 'react-code-blocks/dist';
 import QueryHandler from './QueryHandler';
 import MutationHandler from './MutationHandler';
 import { crudOperations } from '../CrudGenerator';
@@ -17,6 +17,7 @@ import { MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
 import { Box, Button, Divider, Grid, Group, Stack, Title } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import Link from 'next/link';
+ 
 // import videoBg from '../assets/Untitled_design.mp4';
 
 const QueryGenerator = () => {
@@ -291,29 +292,29 @@ const QueryGenerator = () => {
             <Button onClick={updateProjectData}>Update Changes</Button>
             <Button onClick={deleteProject} color='red' variant='light' >Delete Project</Button>
           </Group>
-          <Divider />
+          <Divider  />
 
           <AppHandler />
 
           <EntityHandler />
 
           <Box p={4}>
+          <Divider mt={30} mb={60} />
             <Grid>
-              <Grid.Col span={{ base: 12, md: 3 }}>
+              <Grid.Col span={{ base: 12, md: 3 }}>              
                 <QueryHandler />
                 <MutationHandler />
               </Grid.Col>
               <Grid.Col span={{ base: 12, md: 9 }}>
-                <Divider mt={30} mb={30} />
+                
                 <Title >GraphQLSchema.js Code</Title>
-                <CodeBlock
-                  text={generateGraphQLSchema()}
-
-                  language='javascript'
-                  showLineNumbers={true}
-                  wrapLines={true}
-                  theme={dracula}
-                />
+                <CopyBlock
+                        theme={dracula}
+                        text={generateGraphQLSchema()}
+                        language={'JavaScript'}
+                        showLineNumbers={true}
+                        wrapLines
+                    />
               </Grid.Col>
             </Grid>
           </Box>

@@ -43,7 +43,7 @@ const QueryHandler = () => {
 
     return (
         <>
-            <Divider mt={30} mb={90} />
+             
             <div>
 
                 <Title order={2} mt={30}>Query Handler</Title>

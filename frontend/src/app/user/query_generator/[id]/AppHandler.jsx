@@ -46,7 +46,7 @@ mongoose.exports = mongoose;`
                     text={generateAppCode()}
                     language={'JavaScript'}
                     showLineNumbers={true}
-                    wrapLines
+                    wrapLines 
                 />
             </Grid.Col>
         </Grid>

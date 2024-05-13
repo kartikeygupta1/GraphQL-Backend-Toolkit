@@ -43,7 +43,8 @@ const MutationHandler = () => {
 
 
     return (
-        <div>
+        <>
+        
             <Divider mt={30} mb={60} />
             <Title order={2} mt={30}>Mutation Handler</Title>
 
@@ -127,7 +128,9 @@ const MutationHandler = () => {
                 }
             >Add Mutation</Button>
 
-        </div>
+        
+
+        </>
     )
 }
 

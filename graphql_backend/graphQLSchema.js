@@ -5,6 +5,7 @@ const { default: mongoose } = require('mongoose');
 
 exports.typeDefs = gql
   `type Product {
+    _id: ID!
     category: String!
     productName: String!
     price: Int!
@@ -12,12 +13,12 @@ exports.typeDefs = gql
 }
 type Query {
     getProductsList: [Product]
-    getProduct(id: ID!): Product
+    getProduct(_id: ID!): Product
 }
 type Mutation {
-    updateProduct(id: ID ,category: String, productName: String, price: Int, colors: [String], imgPath: String): Product
+    updateProduct(_id: ID ,category: String, productName: String, price: Int, colors: [String], imgPath: String): Product
     addProduct(category: String, productName: String, price: Int, colors: [String!], imgPath: String): Product
-    deleteProduct(id: ID!): Boolean!
+    deleteProduct(_id: ID!): Boolean!
 } `
 
 // const db_url = 'mongodb+srv://user:ayush@cluster0.2ue1csn.mongodb.net/products_sample2?retryWrites=true&w=majority&appName=Cluster0';
@@ -48,7 +49,7 @@ exports.resolvers = {
     },
     getProduct: async (parent, args) => {
       await connect();
-      const result = ProductModel.findById(args.id).then((res) => {
+      const result = ProductModel.findById(args._id).then((res) => {
         if (res) {
           return res;
         }
@@ -61,7 +62,7 @@ exports.resolvers = {
   Mutation: {
     updateProduct: async (parent, args) => {
       await connect();
-      const result = ProductModel.findByIdAndUpdate(args.id,
+      const result = ProductModel.findByIdAndUpdate(args._id,
         {
           productName: args.productName,
           category: args.category,
@@ -91,9 +92,10 @@ exports.resolvers = {
       return result;
     },
     deleteProduct: async (parent, args) => {
+      console.log(args._id);
       try {
         await connect();
-        await ProductModel.findOneAndRemove({ _id: args.id });
+        await ProductModel.findByIdAndDelete(args._id);
         return true;
       } catch (error) {
         console.log('Error while delete:', error);

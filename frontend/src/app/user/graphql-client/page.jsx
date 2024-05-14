@@ -34,8 +34,8 @@ const FETCH_ALL_QUERY = () => `query GetProduct {
     }
 `
 
-const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $category: Int, $price: Int, $colors: [String]!) {
-    updateEntity(name: $name, category: $category, price: $price, colors: $colors) {
+const UPDATE_MUTATION = () => `mutation updateProduct($id : ID!, $name: String, $category: Int, $price: Int, $colors: [String]!) {
+  updateProduct(_id: $id, name: $name, category: $category, price: $price, colors: $colors) {
         name
         category
         price
@@ -110,6 +110,7 @@ const GraphQLClient = () => {
       })
     });
     const res = await response.json();
+    console.log(res.status);
     setResponse(JSON.stringify(res, null, 2));
   }
 
@@ -223,7 +224,7 @@ const GraphQLClient = () => {
       <div className="col-md-6">
         <div className="form-group text-white">
           <div className="text-center">
-            <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Query</Button>
+            <Button onClick={makeQuery} className="btn btn-primary mt-3 mb-5  ">Make Request</Button>
           </div>
           <label htmlFor="response">Response</label>
           {/* <textarea onChange={e => setResponse(e.target.value)} value={response} className="form-control" id="response" rows="15"></textarea> */}

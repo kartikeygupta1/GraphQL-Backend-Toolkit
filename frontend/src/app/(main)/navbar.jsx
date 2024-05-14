@@ -113,7 +113,7 @@ function Navbar() {
 
               </HoverCard.Dropdown>
             </HoverCard> */}
-            <Link href="../user/graphql-client" className={classes.link}>
+            <Link   href="../user/graphql-client" className={classes.link}>
               GraphQlClient
             </Link>
             <Link href="../user/manage-project" className={classes.link}>
@@ -146,23 +146,13 @@ function Navbar() {
           <a href="../" className={classes.link}>
             Home
           </a>
-          <UnstyledButton className={classes.link} onClick={toggleLinks}>
-            <Center inline>
-              <Box component="span" mr={5}>
-                Features
-              </Box>
-              <IconChevronDown
-                style={{ width: rem(16), height: rem(16) }}
-                color={theme.colors.blue[6]}
-              />
-            </Center>
-          </UnstyledButton>
+           
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
-            Learn
+          <a href="../user/graphql-client" className={classes.link}>
+            GraphQlClient
           </a>
-          <a href="#" className={classes.link}>
-            Academy
+          <a href="../user/manage-project" className={classes.link}>
+            ManageProject
           </a>
 
           <Divider my="sm" />

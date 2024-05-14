@@ -83,7 +83,6 @@ const EntityHandler = () => {
                                         <Flex my={10} align={'flex-end'} w={'100%'}>
 
                                             <TextInput ref={entityNameRef}
-
                                                 rightSection={
                                                     <ActionIcon color='red' onClick={e => removeEntity(index)}>
                                                         <IconTrash size={15} />

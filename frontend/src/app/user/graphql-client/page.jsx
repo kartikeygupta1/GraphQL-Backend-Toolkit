@@ -10,19 +10,23 @@ const DEFAULT_VARIABLE = `{
     "category": "phone",
     "price": 1000,
     "quantity": 1,
-    "description": "smartphone description"
+    "description": "smartphone description",
+    "colors" : ["red", "blue"]
 }`
 
-const FETCH_SINGLE_QUERY = () => `query GetEntity($getProductId: ID!) {
-    getEntity(id: $getEntityId) {
-        fieldname1
-        fieldname2
+const FETCH_SINGLE_QUERY = () => `query GetProduct($getProductId: ID!) {
+    getProduct(id: $getEntityId) {
+      _id  
+      productName
+      category
+        price
     }
   }
 `
 
 const FETCH_ALL_QUERY = () => `query GetProduct {
   getProductsList {
+    _id
         productName
         category
         price
@@ -39,7 +43,7 @@ const UPDATE_MUTATION = () => `mutation updateEntity($name: String, $category: I
     }
 }`
 
-const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String, $price: Int, $colors: [String]!) {
+const ADD_MUTATION = () => `mutation addProduct($name: String!, $category: String, $price: Int, $colors: [String!]) {
     addProduct(productName: $name, category: $category, price: $price, colors: $colors) {
       productName
       category
@@ -48,10 +52,11 @@ const ADD_MUTATION = () => `mutation addProduct($name: String, $category: String
     }
 }`
 
-const DELETE_MUTATION = () => `mutation deleteEntity($name: String, $age: Int) {
-    deleteEntity(name: $name, age: $age) {
-        name
-        age
+const DELETE_MUTATION = () => `mutation deleteEntity($productId: ID) {
+    deleteEntity(id: $productId) {
+      _id  
+      productName
+      age
     }
 }`
 

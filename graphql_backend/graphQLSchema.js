@@ -20,7 +20,8 @@ type Mutation {
     deleteProduct(id: ID!): Boolean!
 } `
 
-const db_url = 'mongodb+srv://user:ayush@cluster0.2ue1csn.mongodb.net/products?retryWrites=true&w=majority&appName=Cluster0';
+// const db_url = 'mongodb+srv://user:ayush@cluster0.2ue1csn.mongodb.net/products_sample2?retryWrites=true&w=majority&appName=Cluster0';
+const db_url = 'mongodb+srv://mmm:mmm@cluster0.gvyon.mongodb.net/product_sample1?retryWrites=true&w=majority&appName=Cluster0';
 
 
 const connect = async () => {
@@ -36,7 +37,7 @@ exports.resolvers = {
 
     getProductsList: async (parent, args) => {
       await connect();
-      const result = ProductModel.find({}).then((res) => {
+      const result = ProductModel.find().then((res) => {
         if (res) {
           console.log(res);
           return res;

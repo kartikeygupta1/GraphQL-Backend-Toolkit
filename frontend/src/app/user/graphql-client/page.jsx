@@ -34,9 +34,9 @@ const FETCH_ALL_QUERY = () => `query GetProduct {
     }
 `
 
-const UPDATE_MUTATION = () => `mutation updateProduct($id : ID!, $name: String, $category: Int, $price: Int, $colors: [String]!) {
-  updateProduct(_id: $id, name: $name, category: $category, price: $price, colors: $colors) {
-        name
+const UPDATE_MUTATION = () => `mutation updateProduct($id : ID!, $name: String, $category: String, $price: Int, $colors: [String]!) {
+  updateProduct(_id: $id, productName: $name, category: $category, price: $price, colors: $colors) {
+        productName
         category
         price
         colors
@@ -52,12 +52,8 @@ const ADD_MUTATION = () => `mutation addProduct($name: String!, $category: Strin
     }
 }`
 
-const DELETE_MUTATION = () => `mutation deleteEntity($productId: ID) {
-    deleteEntity(id: $productId) {
-      _id  
-      productName
-      age
-    }
+const DELETE_MUTATION = () => `mutation deleteProduct($id: String!) {
+  deleteProduct(_id: $id) 
 }`
 
 

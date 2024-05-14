@@ -18,7 +18,7 @@ type Query {
 type Mutation {
     updateProduct(_id: ID ,category: String, productName: String, price: Int, colors: [String], imgPath: String): Product
     addProduct(category: String, productName: String, price: Int, colors: [String!], imgPath: String): Product
-    deleteProduct(_id: ID!): Boolean!
+    deleteProduct(_id: String!): Boolean!
 } `
 
 // const db_url = 'mongodb+srv://user:ayush@cluster0.2ue1csn.mongodb.net/products_sample2?retryWrites=true&w=majority&appName=Cluster0';

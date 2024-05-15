@@ -14,14 +14,14 @@ const DEFAULT_VARIABLE = `{
     "colors" : ["red", "blue"]
 }`
 
-const FETCH_SINGLE_QUERY = () => `query GetProduct($getProductId: ID!) {
-    getProduct(id: $getEntityId) {
-      _id  
-      productName
-      category
-        price
-    }
+const FETCH_SINGLE_QUERY = () => `query GetProduct($id: ID!) {
+  getProduct(_id: $id) {
+    _id  
+    productName
+    category
+      price
   }
+}
 `
 
 const FETCH_ALL_QUERY = () => `query GetProduct {

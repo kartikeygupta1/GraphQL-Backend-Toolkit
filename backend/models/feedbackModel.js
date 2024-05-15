@@ -1,11 +1,12 @@
-const { model, Schema, Types } = require("../connection");
+const { Schema, model } = require('../connection');
 
-const codeSchema = new Schema({
-    name : String,
-    email : String,
-    rating: Number,
-    review: String,
-    createdAt: {type: Date, default: Date.now}
+const mySchema = new Schema({
+    rating: String,
+    username:String,
+    email: String,
+    message: String,
+    createdAt: { type: Date, default: Date.now },
+
 });
 
-module.exports = model("feedback", codeSchema);
+module.exports = model('feedback', mySchema);

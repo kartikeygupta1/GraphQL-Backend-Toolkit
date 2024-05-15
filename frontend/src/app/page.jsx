@@ -129,6 +129,19 @@ export default function Home() {
 
               </Link>
 
+              <Link href="./feedback">
+                <Button
+                  variant="gradient"
+                  gradient={{ deg: 133, from: 'blue', to: 'cyan' }}
+                  size="lg"
+                  radius="md"
+                  mt="xl"
+                >
+                  Give Your Feedback
+                </Button>
+
+              </Link>
+
             </Grid.Col>
             <Grid.Col span={{ base: 12, md: 7 }}>
               <SimpleGrid cols={{ base: 1, md: 2 }} spacing={30}>

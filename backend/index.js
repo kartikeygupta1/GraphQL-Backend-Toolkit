@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-
+const feedbackRouter = require('./router/feedbackRouter');
 const userRouter = require('./router/userRouter');
 const projectRouter = require('./router/projectRouter');
 // importing 
@@ -16,7 +16,7 @@ app.use(cors({
   }));
 app.use(express.json());
 
-
+app.use('/feedback', feedbackRouter)
 app.use('/user', userRouter)
 app.use('/project', projectRouter)
  

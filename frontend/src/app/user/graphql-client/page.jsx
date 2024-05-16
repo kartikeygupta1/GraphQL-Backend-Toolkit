@@ -116,24 +116,7 @@ const GraphQLClient = () => {
         <h1 className='text-white fst-italic pt-5'>GraphQL Client</h1>
         {/* <button className='m-3' id="logoutButton" type='submit'>Logout</button> */}
       </div>
-      {/* <Nav className='bg-primary-subtle' justify variant="tabs" defaultActiveKey="/home">
-                <Nav.Item>
-                    <Nav.Link href="/home">Active</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2">Link</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="disabled" disabled>
-                        Disabled
-                    </Nav.Link>
-                </Nav.Item>
-            </Nav> */}
-
-
+      
       <Grid>
 
         <Grid.Col span={{ base: 12, md: 6 }}>

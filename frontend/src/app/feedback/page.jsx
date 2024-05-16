@@ -48,6 +48,20 @@ const FeedBackForm = () => {
   });
 
   return (
+    <div
+    style={{
+      backgroundImage: `url('https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-waves_23-2150853529.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '20px',
+
+
+    }}
+    >
     <Container size="sm" className="min-h-screen bg-gray-800 py-6 flex flex-col justify-center sm:py-12">
       <Paper shadow="xl" p="md" className="relative py-3 sm:max-w-xl sm:mx-auto bg-gradient-to-r from-indigo-700 to-purple-500 transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
         <Paper p="xl" shadow="lg" radius="md" className="relative bg-indigo-400">
@@ -102,6 +116,7 @@ const FeedBackForm = () => {
         </Paper>
       </Paper>
     </Container>
+    </div>
   );
 };
 

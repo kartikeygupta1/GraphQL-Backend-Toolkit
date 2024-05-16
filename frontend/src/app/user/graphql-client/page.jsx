@@ -9,8 +9,6 @@ const DEFAULT_VARIABLE = `{
     "name": "smartphone",
     "category": "phone",
     "price": 1000,
-    "quantity": 1,
-    "description": "smartphone description",
     "colors" : ["red", "blue"]
 }`
 

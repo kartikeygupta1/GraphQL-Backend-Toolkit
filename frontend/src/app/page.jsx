@@ -83,7 +83,7 @@ export default function Home() {
 
 
         <Container className={classes.container} size="md">
-          <Title className={classes.title}>Graph QL Querry Language
+          <Title className={classes.title}>Graph QL 
             Backend Toolkit </Title>
           <Text className={classes.description} size="xl" mt="xl">
             GRAPHQL Backend Toolkit aims to simplify the development process that allows developers to write backend code in GRAPHQL easily and in less time
